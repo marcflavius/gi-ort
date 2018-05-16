@@ -7,7 +7,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    
     use Notifiable;
+    /**
+     * @var array
+     */
+    protected $with = ['roles','tickets'];
 
     /**
      * The attributes that are mass assignable.
@@ -28,8 +33,21 @@ class User extends Authenticatable
     ];
 
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function roles()
     {
         return $this->belongsToMany(Role::class);
+    }
+
+
+    /**
+     * 
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function tickets()
+    {
+        return $this->hasMany(Ticket::class);
     }
 }

@@ -22,6 +22,7 @@ Auth::routes();
 
 Route::get('/', function (){
 
-    return User::find(3)->roles()->get();
+//    return \Illuminate\Support\Facades\DB::table('tickets')->get();
+    return User::all();
 });
 
