@@ -11,6 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+
+use App\Role;
+use App\RoleUser;
+use App\User;
+
+
+Auth::routes();
+
+
+Route::get('/', function (){
+
+    return User::find(3)->roles()->get();
 });
+
