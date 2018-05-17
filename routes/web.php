@@ -12,8 +12,11 @@
 */
 
 
+use App\Admin;
+use App\Employee;
 use App\Role;
 use App\RoleUser;
+use App\Technician;
 use App\User;
 
 
@@ -22,7 +25,11 @@ Auth::routes();
 
 Route::get('/', function (){
 
-//    return \Illuminate\Support\Facades\DB::table('tickets')->get();
-    return User::all();
+    return
+//        Admin::pluck('role_name');
+//        Technician::pluck('role_name');
+        Employee::pluck('role_name');
+//    dd(DB::getQueryLog());
+
 });
 

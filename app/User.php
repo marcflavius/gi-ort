@@ -2,17 +2,19 @@
 
 namespace App;
 
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    
+
     use Notifiable;
     /**
      * @var array
      */
-    protected $with = ['roles','tickets'];
+    protected $with = ['tickets'];
+
 
     /**
      * The attributes that are mass assignable.
@@ -50,4 +52,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(Ticket::class);
     }
+
+    
 }

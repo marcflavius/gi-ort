@@ -11,8 +11,5 @@ $factory->define(Category::class, function (Faker $faker) {
     return [
         'description' => $faker->paragraph,
         'name' => $faker->word,
-        'user_id' => $faker->randomElement(User::pluck('id')->toArray()),
-
-
     ];
 });

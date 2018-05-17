@@ -18,8 +18,8 @@ class CreateCategoriesTable extends Migration
             $table->string('description', 400);
             $table->string('name',50);
 
-            $table->integer('user_id')->unsigned()->index();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+//            $table->integer('user_id')->unsigned()->index();
+//            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             
         });
     }
