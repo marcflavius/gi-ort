@@ -4,16 +4,16 @@
  <div class="container-fluid">
 
       <div class="row align-self-stretch justify-content-md-center">
-          <div class="left-col col-md-7 my-5">
+          <div class="left-col col-md-8 my-5">
             <h1>Mes demandes ouvertes:</h1>
             <div class="d-flex flex-row mt-3">
-              <select class="form-control  form-control-sm">
+              <select class="form-control w-50 mr-3 form-control-sm">
                 <option>Toutes les catégories</option>
               </select>
-              <select class="form-control  form-control-sm">
+              <select class="form-control w-25 mr-3 form-control-sm">
                 <option>Statut: Ouvert</option>
               </select>
-              <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Valider</a>
+              <a class="btn btn-primary w-25 " data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Valider</a>
             </div>
 
             <div class="listing-tickets mt-3">
@@ -167,9 +167,9 @@
             </nav>
           </div>
           <!-- Right Panel : Ticket displaying here-->
-          <div class="right-col col col-md-5 mt-5 ">
+          <div class="right-col col col-md-4 mt-5 ">
             <br><br><br>
-            <div class="mx-5 px-5 display-tickets">
+            <div class="mx-1 px-1 display-tickets">
               <div class="card" style="">
                 <div class="card-body">
                   <h5 class="card-title">Titre du ticket</h5>
@@ -199,8 +199,8 @@
                     </span>
                   </p>
                   <br>
-                  <a class="btn btn-block btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Save</a>
-                  <a class="btn btn-block btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Cancel</a>
+                  <a class="btn btn-block btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Edit</a>
+                  <a class="btn btn-block btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Delete</a>
                 </div>
               </div>
 

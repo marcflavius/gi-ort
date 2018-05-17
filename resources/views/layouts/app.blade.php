@@ -7,17 +7,14 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>Login</title>
   </head>
-  
-
-  <body>  
-   
 
 
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-custom-primary py-4">
       <a class="navbar-brand" href="#">Systême de gestion de tickets</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -33,39 +30,50 @@
           <li class="nav-item">
             <a class="nav-link" href="index.php">Connexion</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="bo_listing.php">temp : (  ADMIN access listing</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="bo_edit_cat.php">ADMIN edit cat</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="bo_edit_ticket.php">ADMIN edit ticket</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="bo_edit_user.php">ADMIN edit user  )</a>
-          </li>
-          <!-- 
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Dropdown link
+              Admin Menu
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
+              <a class="dropdown-item" href="#">ADMIN listing</a>
+              <a class="dropdown-item" href="#">ADMIN edit cat</a>
+              <a class="dropdown-item" href="#">ADMIN edit user</a>
             </div>
           </li>
-        -->
         </ul>
       </div>
     </nav>
     @yield('content')
 
-    <footer class="footer text-white bg-primary">
-      <div class="container">
-        <span class="">Place sticky footer content here.</span>
+    <footer class="footer text-white ">
+      <div class="row bg-custom-primary">
+        <div class="col-md-3">
+        <h6>Solution mise en place par: </h6>
+          <ul class="collaborators">
+            <li>Fitoussi Jonathan</li>
+            <li>Flavius Marc</li>
+            <li>Fontaine Vincent</li>
+            <li>Garcia Dylan</li>
+            <li>Pellegrino Lucas</li>
+            <li>Valentin Paul</li>
+          </ul>
+        </div>
+        <div class="col-md-3">b</div>
+        <div class="col-md-3">c</div>
+        <div class="col-md-3">
+          <h6>Contact:</h6>
+          <ul>
+            <li>
+              <address>
+                14 Rue Etienne Collongues, <br>
+                31770 Colomiers <br>
+              </address>
+            </li>
+          </ul>
+        </div>
       </div>
+
+
     </footer>
 
     <!-- Optional JavaScript -->

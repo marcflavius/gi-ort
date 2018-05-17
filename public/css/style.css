@@ -4,6 +4,7 @@ html {
 }
 body {
   margin-bottom: 60px; /* Margin bottom by footer height */
+
 }
 .footer {
   position: absolute;
@@ -18,8 +19,9 @@ body {
 /* Custom page CSS
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
-html,body{
-    }
+body *{
+    font-family: 'PT Sans', sans-serif;
+}
 
 .fill {
     flex:1;
@@ -56,7 +58,16 @@ span.user-name {
 
 .left-col,
 .right-col {
-height: calc(100% - 116px;)
+    height: calc(100% - 116px);
+}
+
+/*LOGIN PAGE*/
+.login-form {
+
+}
+
+.login-banner {
+
 }
 
 /*SUCCESS PAGE*/
@@ -65,7 +76,7 @@ height: calc(100% - 116px;)
   display: inline-block;
   vertical-align: middle;
 
-}
+}   
 
 /* BACK OFFICE */
 .bo-menu * {
@@ -76,11 +87,45 @@ height: calc(100% - 116px;)
 /* Customs ELEMENTS */
 
 a.btn {
-  height: 50px;
+  height: 60px;
+  background-color: white;
   border-radius: 0px;
+  border: 1px solid #2E2E2E;
   padding: 0;
   margin: 0;
-   line-height: 50px;
+  color: black;
+   line-height: 60px;
   display: inline-block;
   vertical-align: middle;
+}
+
+.bg-custom-primary {
+  background-color: #009688;
+}
+
+.bg-custom-primary-dark {
+background-color: #00796B;
+}
+
+.bg-custom-accent {
+  background-color: #FF5252;
+}
+
+.custom-primary-text {
+color: #212121;
+}
+
+ul.collaborators {
+  list-style-type: none;
+}
+
+
+
+
+select.form-control,
+select.form-control-sm,
+select.form-control-sm:not([size]):not([multiple]) {
+  height: 60px;
+  border-radius: 0;
+  line-height: 60px;
 }
