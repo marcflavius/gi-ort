@@ -19,7 +19,11 @@ Route::get('/list', 'TicketsController@index');
 
 Route::resource('tickets', 'TicketsController');
 
+Route::get('/', function () {
 
+    //    return \Illuminate\Support\Facades\DB::table('tickets')->get();
+    return view('home');
+});
 
 Route::get('/edit', function () {
 
