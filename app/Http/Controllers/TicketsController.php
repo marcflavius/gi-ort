@@ -15,6 +15,7 @@ class TicketsController extends Controller
      */
     public function index()
     {
+        
         $user =  Auth::user();
         
         $tickets = $user->tickets()->latest()->paginate(20);

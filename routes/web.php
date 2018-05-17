@@ -12,10 +12,14 @@
  */
 
 Auth::routes();
-
+Route::get('/', function (){
+    return view('home');
+});
 Route::get('/list', 'TicketsController@index');
 
 Route::resource('tickets', 'TicketsController');
+
+
 
 Route::get('/edit', function () {
 

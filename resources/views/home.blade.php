@@ -13,18 +13,33 @@
                 <div class="card" style="">
                     <div class="card-body py-0">
                         <p class="card-text">
-                        <form>
+                        <form method="POST" action="{{ route('login') }}">
+                            @csrf
                             <br>
                             <div class="form-group">
-                                <label for="user">Utilisateur</label>
-                                <input type="email" class="form-control" id="user" aria-describedby="emailHelp" placeholder="Entrez votre identifiant">
+                                <label for="email">Utilisateur</label>
+                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                        @if ($errors->has('email'))
+                            <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                        @endif
+
                                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+
                             </div>
+
                             <div class="form-group">
                                 <label for="password">Mot de Passe</label>
-                                <input type="password" class="form-control" id="password" placeholder="Entrez votre mot de passe">
+                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+
+                                @if ($errors->has('password'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
                             </div>
-                            <a type="submit" class="btn btn-block my-3">Connexion</a>
+                            <button type="submit" class="btn btn-block my-3">Connexion</button>
                         </form>
                         <small class="text-danger">Vous avez perdu vos identifiants? Contactez votre administrateur.</small>
                         </p>
