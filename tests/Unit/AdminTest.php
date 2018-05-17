@@ -1,0 +1,28 @@
+<?php
+
+namespace Tests\Unit;
+
+use App\Admin;
+use App\Category;
+use App\User;
+use Tests\TestCase;
+use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+
+class AdminTest extends TestCase
+{
+    /**
+    * @test
+    * @group admin
+    */
+    public function il_posede_un_role()
+    {
+        
+   }
+
+
+    public function il_posed_plusieurs_tickets()
+    {
+        
+   }
+}
