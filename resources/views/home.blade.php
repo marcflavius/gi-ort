@@ -1,23 +1,28 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in!
-                </div>
+<div class="container-fluid">
+    <div class="row justify-content-md-center">
+      <div class="col-md-4">
+        <div class="login-form">
+          <form>
+            <br>
+            <div class="form-group">
+              <label for="user">Utilisateur</label>
+              <input type="email" class="form-control" id="user" aria-describedby="emailHelp" placeholder="Entrez votre identifiant">
+              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
+            <div class="form-group">
+              <label for="password">Mot de Passe</label>
+              <input type="password" class="form-control" id="password" placeholder="Entrez votre mot de passe">
+            </div>
+            <a type="submit" class="btn btn-block btn-danger">Submit</a>
+          </form>
         </div>
+      </div>
     </div>
 </div>
 @endsection
+
+
+

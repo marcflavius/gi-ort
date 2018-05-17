@@ -9,20 +9,25 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
-
-
-use App\Role;
-use App\RoleUser;
-use App\User;
-
+ */
 
 Auth::routes();
 
+Route::get('/',
+	function () {
 
-Route::get('/', function (){
+		//    return \Illuminate\Support\Facades\DB::table('tickets')->get();
+		return view('home');
+	});
 
-//    return \Illuminate\Support\Facades\DB::table('tickets')->get();
-    return User::all();
-});
+Route::get('/list', function () {
 
+		//    return \Illuminate\Support\Facades\DB::table('tickets')->get();
+		return view('list');
+	});
+
+Route::get('/edit', function () {
+
+		//    return \Illuminate\Support\Facades\DB::table('tickets')->get();
+		return view('edit');
+	});
