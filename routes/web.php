@@ -9,27 +9,25 @@
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
-
-
-use App\Admin;
-use App\Employee;
-use App\Role;
-use App\RoleUser;
-use App\Technician;
-use App\User;
-
+ */
 
 Auth::routes();
 
+Route::get('/',
+	function () {
 
-Route::get('/', function (){
+		//    return \Illuminate\Support\Facades\DB::table('tickets')->get();
+		return view('home');
+	});
 
-    return
-//        Admin::pluck('role_name');
-//        Technician::pluck('role_name');
-        Employee::pluck('role_name');
-//    dd(DB::getQueryLog());
+Route::get('/list', function () {
 
-});
+		//    return \Illuminate\Support\Facades\DB::table('tickets')->get();
+		return view('list');
+	});
 
+Route::get('/edit', function () {
+
+		//    return \Illuminate\Support\Facades\DB::table('tickets')->get();
+		return view('edit');
+	});
