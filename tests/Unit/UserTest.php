@@ -11,9 +11,10 @@ class ExampleTest extends TestCase
      * A basic test example.
      *
      * @return void
+     * @test
      */
-    public function testBasicTest()
+    public function il_posede_plusieurs_tickets
     {
-        $this->assertTrue(true);
+        factory(??lass);)->create();
     }
 }
