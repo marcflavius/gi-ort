@@ -11,8 +11,13 @@
 |
  */
 
+
+use App\Ticket;
+
+
 Auth::routes();
 Route::get('/', function (){
+    return Ticket::all();
     return view('home');
 });
 Route::get('/list', 'TicketsController@index');
