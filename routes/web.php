@@ -13,18 +13,9 @@
 
 Auth::routes();
 
-Route::get('/',
-	function () {
+Route::get('/list', 'TicketsController@index');
 
-		//    return \Illuminate\Support\Facades\DB::table('tickets')->get();
-		return view('home');
-	});
-
-Route::get('/list', function () {
-
-		//    return \Illuminate\Support\Facades\DB::table('tickets')->get();
-		return view('list');
-	});
+Route::resource('tickets', 'TicketsController');
 
 Route::get('/edit', function () {
 

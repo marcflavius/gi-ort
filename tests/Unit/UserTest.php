@@ -21,13 +21,20 @@ class UserTest extends TestCase {
      */
     public function il_posede_plusieurs_tickets()
     {
+//        setup
+       $user =  factory(User::class)->create();
+
         $user_id = factory(RoleUser::class)->create()->user_id;
         factory(Ticket::class)->create([
             'user_id' => $user_id,
         ]);
+
         $user = User::findOrFail($user_id);
+
+
         $this->assertInstanceOf(Ticket::class, $user->tickets()->first());
     }
-    
+
+
 
 }
