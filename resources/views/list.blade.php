@@ -25,25 +25,25 @@
                   <th scope="col">Ouvert par</th>
                   <th scope="col">Priorité</th>
                   <th scope="col">Statut</th>
+                  <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
 
-              {{dd($tickets)}}
               @foreach($tickets as $ticket)
-                <tr>
+{{--                {{dd($tickets)}}--}}
+                <tr class="ticket" data-content="{{$ticket->description}}">
                   <td style="width: 60%">
-                    <span>{{$ticket->objet}} :
-                      <small>{{$ticket->description}}</small>
-                    </span>
+                    <span>{{$ticket->objet}} : </span>
+                    <small>{{$ticket->description}}</small>
                   </td>
-                  <td>{{$ticket->category_id}}</td>
-                  <td>{{$ticket->user_id}}</td>
+                  <td>{{$ticket->category->name}}</td>
+                  <td>{{$ticket->user->name}}</td>
                   <td>1</td>
                   <td>Ouvert</td>
+                  <td><a href=""></a></td>
                 </tr>
               @endforeach
-
 
               </tbody>
             </table>
@@ -66,31 +66,22 @@
           <div class="right-col col col-md-4 mt-5 ">
             <br><br><br>
             <div class="mx-1 px-1 display-tickets">
+
               <div class="card" style="">
                 <div class="card-body">
                   <h5 class="card-title">Titre du ticket</h5>
                   <h6 class="card-subtitle mb-2 text-muted">Posté par: Nom Prénom</h6>
                   <p class="card-text">
                     <span class="user-field">Statut:
-                      <select class="form-control  form-control-sm">
-                        <option>Statut: Ouvert</option>
-                      </select>
+                      <small>Statut: Ouvert</small>
                     </span><br>
                     <span class="user-field">Catégorie:
-                      <select class="form-control  form-control-sm">
-                        <option>Toute les catégories</option>
-                      </select>
+                        <small>Toute les catégories</small>
                     </span><br><br>
                     <span class="user-field">Description:
                     <hr>
-                      <span class="user-name">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                        eu tincidunt enim, sit amet varius diam. Sed non eros tellus.
-                        Donec laoreet ante eu neque vehicula, ac congueeros commodo.
-                        Curabitur luctus  vehicula eros, nec tempor diam commodo in.
-                        Phasellus eget massa ut ex vehicula dictum. Nullam maximus
-                        eros nunc, at laoreet lectus ermentum vitae. Proin faucibus eu
-                        nisi a maximus.
+                      <span class="ticket-description">
+
                       </span>
                     </span>
                   </p>
@@ -100,10 +91,7 @@
                 </div>
               </div>
 
-
-
               <br><br>
-
             </div>
           </div>
       </div>

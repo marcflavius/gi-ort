@@ -17,11 +17,18 @@ class TicketsController extends Controller
     {
         
         $user =  Auth::user();
-        
-        $tickets = $user->tickets()->latest()->paginate(20);
+
+        $tickets = $user->tickets()->latest()->paginate(10);
 
         $ticketsAll = Ticket::all();
-        return view('list',compact('user','tickets','ticketsAll'));
+
+        if (Auth::user()){
+            return view('list',compact('user','tickets','ticketsAll'));
+
+        } else {
+            return view('home');
+        }
+
 
     }
 

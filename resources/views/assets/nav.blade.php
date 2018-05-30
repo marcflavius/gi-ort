@@ -13,7 +13,7 @@
             </li>
             @auth
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('login')}}">Déconnexion</a>
+                    <a class="nav-link" href="{{route('logout')}}">Déconnexion</a>
                 </li>
             @endauth
             @guest
