@@ -12,7 +12,7 @@
                     <form>
                       <div class="form-group">
                         <label for="title">Titre du ticket : </label>
-                        <input type="text" class="form-control" id="title" placeholder="">
+                        <input type="text" class="form-control" id="title" value="{{$ticket->objet}}" placeholder="">
                       </div>
                       <div class="form-group">
                         <label for="priority">Priorité : </label>
@@ -27,13 +27,16 @@
                         <label for="category">Catégorie : </label>
                         <select class="form-control form-control-sm" id="category">
                           <option>Toute les catégories</option>
+                            @foreach($categories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
                         </select>
                       </div>
                       <div class="form-group">
                         <label for="description">Description</label><br>
                         <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
                         eu tincidunt enim, sit amet varius diam. Sed non eros tellus. Proin faucibus eu nisi a maximus.</small>
-                        <textarea class="form-control" id="description" rows="5"></textarea>
+                        <textarea class="form-control" id="description" rows="5">{{$ticket->description}}</textarea>
                       </div>
                     </form>
                   </p>

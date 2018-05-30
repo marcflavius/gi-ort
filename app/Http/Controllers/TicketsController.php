@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Ticket;
 use Auth;
 use Illuminate\Http\Request;
@@ -61,7 +62,9 @@ class TicketsController extends Controller
      */
     public function show($id)
     {
-        //
+        $ticket = Ticket::find($id);
+
+        return view('show', compact('ticket'));
     }
 
     /**
@@ -72,7 +75,10 @@ class TicketsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $ticket = Ticket::find($id);
+        $categories = Category::all();
+
+        return view('edit', compact('ticket', 'categories'));
     }
 
     /**
