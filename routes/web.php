@@ -16,19 +16,18 @@ use App\Ticket;
 
 Auth::routes();
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/list', 'TicketsController@index');
-    Route::get('/list', 'TicketsController@index');
-    Route::resource('tickets', 'TicketsController');
-});
+
+
 
 Route::get('/', function () {
 //    Auth::logout();
     //    return \Illuminate\Support\Facades\DB::table('tickets')->get();
     return view('home');
 });
-Route::get('/edit', function () {
 
-    //    return \Illuminate\Support\Facades\DB::table('tickets')->get();
-    return view('edit');
+Route::middleware(['auth'])->group(function(){
+    Route::resource('tickets', 'TicketsController');
+    Route::resource('admin/user', 'AdminUserController');
+    Route::resource('admin/category', 'AdminCategoryController');
+    Route::resource('admin/ticket', 'AdminTicketController');
 });
