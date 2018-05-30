@@ -1,5 +1,4 @@
 <?php
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,25 +11,24 @@
  */
 
 
-use App\Admin;
 use App\Ticket;
-use App\User;
 
 
 Auth::routes();
-Route::get('/', function (){
-	    $admin =   Admin::find(1);
-     return view('home',compact('admin'));
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/list', 'TicketsController@index');
+    Route::get('/list', 'TicketsController@index');
+    Route::resource('tickets', 'TicketsController');
 });
 
-Route::get('/list', 'TicketsController@index');
-
-Route::resource('tickets', 'TicketsController');
-
-
-
+Route::get('/', function () {
+//    Auth::logout();
+    //    return \Illuminate\Support\Facades\DB::table('tickets')->get();
+    return view('home');
+});
 Route::get('/edit', function () {
 
-		//    return \Illuminate\Support\Facades\DB::table('tickets')->get();
-		return view('edit');
-	});
+    //    return \Illuminate\Support\Facades\DB::table('tickets')->get();
+    return view('edit');
+});

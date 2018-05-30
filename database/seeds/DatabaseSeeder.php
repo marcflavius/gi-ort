@@ -31,11 +31,15 @@ class DatabaseSeeder extends Seeder {
         $this->call(RoleUserTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
         $this->call(TicketsTableSeeder::class);
-        factory(User::class)->create([
+        $admin = factory(User::class)->create([
             'email' => 'super@app.com',
             'password' => bcrypt('password'),
             
         ]);
+        factory(Ticket::class, 20)->create([
+            'user_id' => $admin->id,
+        ]);
+        
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }

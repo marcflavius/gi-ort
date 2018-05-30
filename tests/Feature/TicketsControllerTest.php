@@ -3,10 +3,11 @@
 namespace Tests\Feature;
 
 
+use App\Ticket;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-
+use App\User;
 
 class TicketsControllerTest extends TestCase {
 
@@ -16,6 +17,7 @@ class TicketsControllerTest extends TestCase {
      */
     public function un_utilisateur_peut_se_connecter()
     {
+        
     }
     
 
@@ -25,6 +27,13 @@ class TicketsControllerTest extends TestCase {
      */
     public function un_utilisateur_peut_voir_tout_ces_tickets()
     {
+//        monde
+        $user = factory(User::class)->create();
+        $ticket = factory(Ticket::class)->create();
+        
+//        action
+//        comparaison
+        
     }
     /**
      * @test
