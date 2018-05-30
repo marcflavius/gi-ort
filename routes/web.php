@@ -11,10 +11,18 @@
 |
  */
 
+
+use App\Admin;
+use App\Ticket;
+use App\User;
+
+
 Auth::routes();
 Route::get('/', function (){
-    return view('home');
+	    $admin =   Admin::find(1);
+     return view('home',compact('admin'));
 });
+
 Route::get('/list', 'TicketsController@index');
 
 Route::resource('tickets', 'TicketsController');

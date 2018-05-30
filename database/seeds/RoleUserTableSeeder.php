@@ -15,7 +15,6 @@ class RoleUserTableSeeder extends Seeder {
     public function run()
     {
 
-        RoleUser::truncate();
         factory(RoleUser::class,20)->create();
     }
 
