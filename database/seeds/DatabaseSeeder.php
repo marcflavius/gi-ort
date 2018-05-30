@@ -17,7 +17,13 @@ class DatabaseSeeder extends Seeder {
      */
     public function run()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+
+
+        if (env('DB_CONNECTION') === 'sqlite') {
+            DB::statement('SET FOREIGN_KEY_CHECKS=0;');
+       }
+        
+        
         RoleUser::truncate();
         Role::truncate();
         Category::truncate();
@@ -41,6 +47,8 @@ class DatabaseSeeder extends Seeder {
         ]);
         
 
+        if (env('DB_CONNECTION') === 'sqlite') {
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+        }
     }
 }

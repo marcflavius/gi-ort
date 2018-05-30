@@ -32,6 +32,7 @@ class TicketsControllerTest extends TestCase {
         $ticket = factory(Ticket::class)->create();
         
 //        action
+        -
 //        comparaison
         
     }
