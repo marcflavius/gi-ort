@@ -2,6 +2,7 @@
 
 @section('content')
     <div class="container-fluid">
+
         <div class="row align-self-stretch justify-content-md-center">
             <div class="right-col col col-md-6 mt-5 ">
                 <br><br><br>

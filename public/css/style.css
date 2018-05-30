@@ -41,6 +41,10 @@ body *{
   
 }
 
+tr.ticket{
+  min-height: 100px;
+}
+
 .display-tickets {
   
 }

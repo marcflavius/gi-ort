@@ -11,6 +11,9 @@ use Illuminate\Database\Eloquent\Model;
 class Ticket extends Model
 {
     protected $with = ['category'];
+
+    protected $fillable = ['objet', 'description', 'category'];
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
