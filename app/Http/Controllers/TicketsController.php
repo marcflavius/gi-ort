@@ -87,18 +87,20 @@ class TicketsController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Ticket $ticket)
     {
         $rules = [
-            'objet' => 'require',
-            'description' => 'require',
-            'category' => 'require'
+            'objet' => 'required',
+            'description' => 'required',
+            'category' => 'required'
         ];
+        
+        $this->validate($request, $rules);
+        
+        dd($request);
+        $ticket->update($request->all());
+        return back();
 
-        $ticket = Ticket::find($id);
-        $ticket->fill($request->all());
-
-        return redirect('list');
     }
 
 
