@@ -75,7 +75,11 @@ class TicketsController extends Controller {
     {
         $ticket = Ticket::find($id);
         $categories = Category::all();
-        return view('edit', compact('ticket', 'categories'));
+        $categoryIdArray = $categories->pluck('name', 'id');
+        $priorityArray = ['faible' => 'faible', 'normal' => 'normal', 'urgent' => 'urgent'];
+        $statusArray = ['en cours' => 'en cours', 'fermé' => 'fermé', 'ouvert' => 'ouvert'];
+
+        return view('edit', compact('ticket', 'categories', 'categoryIdArray', 'priorityArray', 'statusArray'));
     }
 
 
@@ -92,14 +96,16 @@ class TicketsController extends Controller {
         $rules = [
             'objet' => 'required',
             'description' => 'required',
-            'category' => 'required'
+            'category_id' => 'required',
+            'priority' => 'required',
+            'status' => 'required'
         ];
         
         $this->validate($request, $rules);
-        
-        dd($request);
+
         $ticket->update($request->all());
-        return back();
+
+        return redirect()->route('tickets.show', ['id' => $ticket->id]);
 
     }
 
@@ -115,4 +121,7 @@ class TicketsController extends Controller {
     {
         //
     }
+
+
+
 }
