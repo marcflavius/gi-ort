@@ -36,8 +36,8 @@
                 </td>
                 <td>{{$ticket->category->name}}</td>
                 <td>{{$ticket->user->name}}</td>
-                <td>1</td>
-                <td>Ouvert</td>
+                <td>{{$ticket->priority}}</td>
+                <td>{{$ticket->status}}</td>
                 <td><a href="{{route('tickets.show', ['ticket' => $ticket])}}">voir</a></td>
               </tr>
             @endforeach

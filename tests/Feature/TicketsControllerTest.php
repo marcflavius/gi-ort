@@ -27,14 +27,25 @@ class TicketsControllerTest extends TestCase {
      */
     public function un_utilisateur_peut_voir_tout_ces_tickets()
     {
+//        $this->withoutExceptionHandling();
 //        monde
-        $user = factory(User::class)->create();
+         $user = factory(User::class)->create();
         $ticket = factory(Ticket::class)->create();
-        
 //        action
-        -
-//        comparaison
+        $this->be($user);
         
+//        comparaison
+      $r =   $this->get("tickets",$user)
+//             ->assertViewHas('tickets.index',$user)
+             ->assertSeeText($ticket->status)
+             ->assertSeeText($ticket->categorie)
+             ->assertSeeText($ticket->user_idd)
+             ->assertViewIs('tickets.index');
+//      $r = (array)$r;
+//        dd($r);
+        ;
+
+
     }
     /**
      * @test
@@ -45,7 +56,7 @@ class TicketsControllerTest extends TestCase {
     }
     /**
      * @test
-     * @group ticketFeature
+     * @group ticketFeature                           1
      */
     public function un_technitien_peut_modifier_le_status_dun_ticket()
     {

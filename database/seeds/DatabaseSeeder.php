@@ -18,8 +18,7 @@ class DatabaseSeeder extends Seeder {
     public function run()
     {
 
-
-        if (env('DB_CONNECTION') === 'sqlite') {
+        if (env('DB_CONNECTION') === 'mysql') {
             DB::statement('SET FOREIGN_KEY_CHECKS=0;');
        }
         
@@ -47,7 +46,7 @@ class DatabaseSeeder extends Seeder {
         ]);
         
 
-        if (env('DB_CONNECTION') === 'sqlite') {
+        if (env('DB_CONNECTION') === 'mysql') {
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         }
     }
