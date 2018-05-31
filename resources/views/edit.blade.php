@@ -20,40 +20,34 @@
                     ]) }}
 
                     <div class="form-group">
-                          {{ Form::text('objet', 'example')}}
+                        {{ Form::label('objet', 'Titre du ticket') }}
+                        {{ Form::text('objet', $ticket->objet, ['class' => 'form-control'])}}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('status', 'Statut') }}
+                        {{ Form::select('status', $statusArray, $ticket->status,['class' => 'form-control form-control-sm']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('priority', 'Priorité') }}
+                        {{ Form::select('priority', $priorityArray, $ticket->priority,['class' => 'form-control form-control-sm']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('category_id', 'Catégorie') }}
+                        {{ Form::select('category_id', $categoryIdArray, $ticket->category->id,['class' => 'form-control form-control-sm']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('description', 'Description du problème') }}
+                        {{ Form::textarea('description', $ticket->description, ['class' => 'form-control', 'rows' => '5'])}}
                     </div>
                     
-                    <div class="form-group">
-                        <label for="priority">Priorité : </label>
-                        <select class="form-control form-control-sm" id="priority">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                    <label for="category">Catégorie : </label>
-                    <select class="form-control form-control-sm" id="category">
 
-                        @foreach($categories as $category)
-                            <option value="{{$category->id}}"
-                                @if($category->id == $ticket->category->id)
-                                selected
-                                @endif
-                            >{{$category->name}}</option>
-                        @endforeach
-                    </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="description">Description</label><br>
-                        <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam
-                        eu tincidunt enim, sit amet varius diam. Sed non eros tellus. Proin faucibus eu nisi a maximus.</small>
-                        <textarea class="form-control" id="description" rows="5">{{$ticket->description}}</textarea>
-                    </div>
 
-                    <a class="btn btn-block btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Cancel</a>
-                         {{Form::submit('Soumettre')}}
+                    <a class="btn btn-block btn-primary">Cancel</a>
+                    {{Form::submit('Save', ['class' => 'btn btn-block btn-submit btn-primary'])}}
                     {{ Form::close()}}
                 </p>
                 </div>

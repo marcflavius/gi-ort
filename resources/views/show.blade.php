@@ -4,7 +4,7 @@
     <div class="container-fluid">
 
         <div class="row align-self-stretch justify-content-md-center">
-            <div class="right-col col col-md-6 mt-5 ">
+            <div class="right-col col col-md-4 mt-5 ">
                 <br><br><br>
                 <div class="mx-1 px-1 display-tickets">
 
@@ -14,7 +14,10 @@
                             <h6 class="card-subtitle mb-2 text-muted">Posté par: {{$ticket->user->name}}</h6>
                             <p class="card-text">
                                 <span class="user-field">Statut:
-                                  <small>Statut: Ouvert</small>
+                                  <small>{{$ticket->status}}</small>
+                                </span><br>
+                                <span class="user-field">Priorité:
+                                  <small>{{$ticket->priority}}</small>
                                 </span><br>
                                 <span class="user-field">Catégorie:
                                     <small>{{$ticket->category->name}}</small>

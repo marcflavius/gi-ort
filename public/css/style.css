@@ -90,6 +90,7 @@ span.user-name {
 
 /* Customs ELEMENTS */
 
+input.btn-submit,
 a.btn {
   height: 60px;
   background-color: white;

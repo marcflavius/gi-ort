@@ -12,7 +12,7 @@ class Ticket extends Model
 {
     protected $with = ['category'];
 
-    protected $fillable = ['objet', 'description', 'category'];
+    protected $fillable = ['objet', 'description', 'category_id', 'status', 'priority'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
