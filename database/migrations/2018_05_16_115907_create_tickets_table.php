@@ -15,8 +15,8 @@ class CreateTicketsTable extends Migration
     {
         Schema::create('tickets', function (Blueprint $table) {
             $table->increments('id');
-            $table->enum('status', ['en cours','fermé','ouvert'])->default('ouvert');
-            $table->enum('priority', ['faible','normal','urgent'])->default('normal');
+            $table->enum('status', ['en cours','fermer','ouvert'])->default('ouvert');
+                $table->enum('priority', ['faible','normal','urgent'])->default('normal');
             $table->string('objet',100);
             $table->text('description', 400);
             $table->timestamps();

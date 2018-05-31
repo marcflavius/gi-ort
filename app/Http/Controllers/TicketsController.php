@@ -46,7 +46,18 @@ class TicketsController extends Controller {
      */
     public function store(Request $request)
     {
-        //
+
+
+        $ticket = new Ticket();
+        
+        $ticket->objet = $request->input('objet');
+        $ticket->description = $request->input('description');
+        $ticket->status = $request->input('status');
+        $ticket->priority = $request->input('priority');
+        $ticket->user_id = Auth::user()->id;
+        $ticket->category_id = $request->input('category_id');
+        $ticket->save();
+
     }
 
 
