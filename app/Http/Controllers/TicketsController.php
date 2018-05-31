@@ -7,6 +7,7 @@ use App\Category;
 use App\Ticket;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
 
 
 class TicketsController extends Controller {
@@ -88,7 +89,16 @@ class TicketsController extends Controller {
      */
     public function update(Request $request, $id)
     {
-        //
+        $rules = [
+            'objet' => 'require',
+            'description' => 'require',
+            'category' => 'require'
+        ];
+
+        $ticket = Ticket::find($id);
+        $ticket->fill($request->all());
+
+        return redirect('list');
     }
 
 
