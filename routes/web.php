@@ -29,7 +29,7 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function(){
     Route::resource('tickets', 'TicketsController');
-    Route::resource('admin/user', 'AdminUserController');
-    Route::resource('admin/category', 'AdminCategoryController');
-    Route::resource('admin/ticket', 'AdminTicketController');
+    Route::resource('admin/users', 'AdminUserController');
+    Route::resource('admin/categories', 'AdminCategoryController');
+    Route::resource('admin/tickets', 'AdminTicketController');
 });
