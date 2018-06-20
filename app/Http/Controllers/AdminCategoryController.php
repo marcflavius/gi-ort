@@ -79,7 +79,7 @@ class AdminCategoryController extends Controller
         $category->name = $request->input('name');
         $category->user_id = aut()->user()->id;
         $category->update();
-        return redirect()->route('categories.show', ['id' => $category->id]);
+        return redirect()->route('admin.categories.show', ['id' => $category->id]);
     }
 
     /**

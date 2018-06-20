@@ -129,7 +129,7 @@ class TicketsController extends Controller {
             'priority'    => 'required',
             'status'      => 'required'
         ];
-        //        $this->validate($request, $rules);
+                $this->validate($request, $rules);
         $ticket->objet = $request->input('objet');
         $ticket->description = $request->input('description');
         $ticket->status = $request->input('status');

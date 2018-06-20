@@ -21,49 +21,51 @@ class AdminTicketsControllerTest extends Feature {
     }
 
 
+//    /**
+//     * @test
+//     * @group ticketFeature
+//     */
+//    public function un_utilisateur_peut_se_connecter()
+//    {
+//
+//    }
+
+
     /**
      * @test
      * @group ticketFeature
      */
-    public function un_utilisateur_peut_se_connecter()
-    {
+        public function un_utilisateur_peut_voir_tout_ces_tickets()
+        {
+            $this->withoutExceptionHandling();
+            $user = $this->makeUser();
+            $this->be($user);
+            $this->get("tickets")
+                 ->assertSeeText($this->ticket->status)
+                  ->assertSeeText($this->ticket->categorie)
+                 ->assertSeeText($this->ticket->user_idd)
+                 ->assertViewIs('tickets.index');
+        }
 
-    }
-
-
-    /**
-     * @test
-     * @group ticketFeature
-     */
-    //    public function un_utilisateur_peut_voir_tout_ces_tickets()
-    //    {
-    //        $user = $this->makeUser();
-    //        $this->be($user);
-    //        $this->get("tickets")
-    //             ->assertSeeText($this->ticket->status)
-    //             ->assertSeeText($this->ticket->categorie)
-    //             ->assertSeeText($this->ticket->user_idd)
-    //             ->assertViewIs('tickets.index');
-    //    }
-    //    /**
-    //     * @test
-    //     * @group ticketFeature
-    //     */
-    //    public function un_utilisateur_peut_creer_un_ticket()
-    //    {
-    //        //        monde
-    //        $ticket = factory(Ticket::class)->raw();
-    //        $user = $this->makeUser();
-    //        $this->be($user);
-    //        //        action
-    //        $this->post(route('tickets.store'), $ticket);
-    //        $this->assertDatabaseHas('tickets', [
-    //            'status'      => $ticket['status'],
-    //            'priority'    => $ticket['priority'],
-    //            'objet'       => $ticket['objet'],
-    //            'description' => $ticket['description'],
-    //        ]);
-    //    }
+        /**
+         * @test
+         * @group ticketFeature
+         */
+        public function un_utilisateur_peut_creer_un_ticket()
+        {
+            //        monde
+            $ticket = factory(Ticket::class)->raw();
+            $user = $this->makeUser();
+            $this->be($user);
+            //        action
+            $this->post(route('tickets.store'), $ticket);
+            $this->assertDatabaseHas('tickets', [
+                'status'      => $ticket['status'],
+                'priority'    => $ticket['priority'],
+                'objet'       => $ticket['objet'],
+                'description' => $ticket['description'],
+            ]);
+        }
     /**
      * @test
      * @group ticketFeature

@@ -11,18 +11,18 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 class AdminTest extends TestCase
 {
-    /**
-    * @test
-    * @group admin
-    */
-    public function il_posede_un_role()
-    {
-        
-   }
+//    /**
+//    * @test
+//    * @group admin
+//    */
+//    public function il_posede_un_role()
+//    {
+//
+//   }
 
 
-    public function il_posed_plusieurs_tickets()
-    {
-        
-   }
+//    public function il_posed_plusieurs_tickets()
+//    {
+//
+//   }
 }

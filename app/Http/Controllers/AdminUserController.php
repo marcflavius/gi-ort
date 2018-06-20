@@ -74,9 +74,19 @@ class AdminUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $user)
     {
-        //
+        $rules = [
+            'description' => 'required',
+            'name' => 'required',
+        ];
+
+        $this->validate($request, $rules);
+        $user->description = $request->input('description');
+        $user->name = $request->input('name');
+        $user->user_id = aut()->user()->id;
+        $user->update();
+        return redirect()->route('admin.users.show', ['id' => $user->id]);
     }
 
     /**
