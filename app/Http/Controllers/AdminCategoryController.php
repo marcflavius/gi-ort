@@ -71,7 +71,7 @@ class AdminCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $category)
+    public function update(Request $request, Category $category)
     {
         $rules = [
             'description' => 'required',
@@ -79,8 +79,11 @@ class AdminCategoryController extends Controller
             'user_id' => 'required'
         ];
 
-        $this->validate($request, $rules);
-        $ticket->update($request->all());
+//        $this->validate($request, $rules);
+        $category->description = $request->description;
+        $category->name = $request->name;
+        $category->update();
+
         return redirect()->route('admin.categories.show', ['id' => $category->id]);
     }
 

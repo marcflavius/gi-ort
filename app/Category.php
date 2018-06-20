@@ -8,6 +8,8 @@ class Category extends Model
 {
     public $timestamps = false;
     
+    protected $fillable = ['description','name'];
+    
     public function user()
     {
         return $this->belongsTo(User::class);

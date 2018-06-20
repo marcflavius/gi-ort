@@ -15,16 +15,16 @@
 					{{ Form::open(['route' => ['admin.categories.update', $category->id], 'method' => 'PATCH']) }}
 
                     <div class="form-group">
-                        {{ Form::label('objet', 'Nom de la catégorie') }}
-                        {{ Form::text('objet', $category->name, ['class' => 'form-control'])}}
+                        {{ Form::label('name', 'Nom de la catégorie') }}
+                        {{ Form::text('name', $category->name, ['class' => 'form-control'])}}
                     </div>
+
+					<div class="form-group">
+
+					</div>
                     <div class="form-group">
-                        {{ Form::label('status', 'Description') }}
-                        {{ Form::textarea('status', $category->description, ['class' => 'form-control', 'rows' => '5']) }}
-                    </div>
-                    <div class="form-group">
-                        {{ Form::label('user_id', 'Responsable') }}
-                        {{ Form::select('user_id', $responsibleArray, $category->user_id, ['class' => 'form-control form-control-sm']) }}
+                        {{ Form::label('description', 'Description') }}
+                        {{ Form::textarea('description', $category->description, ['class' => 'form-control', 'rows' => '5']) }}
                     </div>
                     <a class="btn btn-block btn-primary">Cancel</a>
                     {{ Form::submit('Save', ['class' => 'btn btn-block btn-submit btn-primary']) }}
