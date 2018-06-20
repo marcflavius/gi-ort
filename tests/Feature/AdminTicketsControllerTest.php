@@ -35,17 +35,19 @@ class AdminTicketsControllerTest extends Feature {
      * @test
      * @group ticketFeature
      */
-        public function un_utilisateur_peut_voir_tout_ces_tickets()
-        {
-            $this->withoutExceptionHandling();
-            $user = $this->makeUser();
-            $this->be($user);
-            $this->get("tickets")
-                 ->assertSeeText($this->ticket->status)
-                  ->assertSeeText($this->ticket->categorie)
-                 ->assertSeeText($this->ticket->user_idd)
-                 ->assertViewIs('tickets.index');
-        }
+//        public function un_utilisateur_peut_voir_tout_ces_tickets()
+//        {
+//            $this->withoutExceptionHandling();
+//            $user = factory(User::class)->create();
+//            $ticket = factory(Ticket::class)->create([
+//                'user_id' => $user->id,
+//            ]);
+//
+//            $this->be($user);
+//            $this->get("tickets")
+////                 ->assertSeeText($ticket->description)
+//                 ->assertViewIs('tickets.index');
+//        }
 
         /**
          * @test
