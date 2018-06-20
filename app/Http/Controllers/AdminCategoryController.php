@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\User;
 use Illuminate\Http\Request;
 
 class AdminCategoryController extends Controller
@@ -58,7 +59,9 @@ class AdminCategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        return view('admin.categories.edit',compact('category'));
+        $users = User::all();
+        $responsibleArray = $users->pluck('name', 'id');
+        return view('admin.categories.edit',compact('category', 'responsibleArray'));
     }
 
     /**
@@ -73,14 +76,13 @@ class AdminCategoryController extends Controller
         $rules = [
             'description' => 'required',
             'name' => 'required',
+            'user_id' => 'required'
         ];
 
-                $this->validate($request, $rules);
-        $category->description = $request->input('description');
-        $category->name = $request->input('name');
-        $category->user_id = aut()->user()->id;
-        $category->update();
-        return redirect()->route('categories.show', ['id' => $category->id]);
+        $this->validate($request, $rules);
+        
+        $ticket->update($request->all());
+        return redirect()->route('admin.categories.show', ['id' => $category->id]);
     }
 
     /**
@@ -93,6 +95,6 @@ class AdminCategoryController extends Controller
     {
         $c = Category::findOrFail($id);
         $c->destroy($id);
-        return redirect()->route('categories.index');
+        return redirect()->route('admin.categories.index');
     }
 }

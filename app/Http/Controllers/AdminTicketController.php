@@ -97,7 +97,7 @@ class AdminTicketController extends Controller
 
         return redirect()->route('admin.tickets.show', ['id' => $ticket->id]);
     }
-
+    
     /**
      * Remove the specified resource from storage.
      *
