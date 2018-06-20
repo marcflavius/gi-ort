@@ -14,7 +14,7 @@ class AdminUserController extends Controller
      */
     public function index()
     {
-        return view('admin.user_list');
+        return view('admin.users.index');
     }
 
     /**
@@ -44,9 +44,9 @@ class AdminUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        //
+        return view('admin.users.show',compact('user'));
     }
 
     /**
@@ -55,10 +55,9 @@ class AdminUserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $user)
     {
-        $user = User::find($id);
-        return view('admin.user_edit')->with('user');
+        return view('admin.users.edit',compact('user'));
     }
 
     /**

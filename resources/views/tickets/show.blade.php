@@ -34,7 +34,7 @@
 							<a class="btn btn-block btn-primary" href="{{route('tickets.edit', ['ticket' => $ticket])}}"
 							   role="button">Edit</a>
 						</div>
-						@if( true)
+						@if( Auth::user()->roles()->first()->id === 1)
 							{{ Form::open([
                      'route' => ['tickets.destroy',$ticket->id],
                       'method' => 'DELETE'
