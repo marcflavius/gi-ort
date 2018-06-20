@@ -4,9 +4,8 @@
 use App\Role;
 use Illuminate\Database\Seeder;
 
-
-class RolesTableSeeder extends Seeder {
-
+class RolesTableSeeder extends Seeder
+{
     /**
      * Run the database seeds.
      *
@@ -14,12 +13,8 @@ class RolesTableSeeder extends Seeder {
      */
     public function run()
     {
-        
-       $roles =  [Role::USER_ADMIN,Role::USER_TECHNICIAN,Role::USER_EMPLOYEE];
-        foreach ($roles as $role) {
-            factory(Role::class)->create([
-                'role_name' => $role,
-            ]);
-        }
+        Role::create(['role_name' => Role::USER_ADMIN,]);
+        Role::create(['role_name' => Role::USER_EMPLOYEE,]);
+        Role::create(['role_name' => Role::USER_TECHNICIAN,]);
     }
 }

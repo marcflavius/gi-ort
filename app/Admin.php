@@ -5,6 +5,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 
 /**
@@ -15,11 +16,14 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Admin extends User {
 
+    public const ROLE_ID = 1;
+
     protected $table = 'users';
 
     protected $with = ['tickets', 'categories'];
 
     protected $fillable = ['name'];
+
 
 
     /**
@@ -31,14 +35,11 @@ class Admin extends User {
     {
         parent::boot();
         static::addGlobalScope('admin', function (Builder $builder) {
-            $builder
-                ->join('role_user', 'users.id', '=', 'role_user.user_id')
-                ->join('roles', 'roles.id', '=', 'role_user.role_id')
-                ->where("role_id", 1);
+            $builder;
+
         });
     }
 
-    
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
@@ -60,8 +61,13 @@ class Admin extends User {
 
     public function categories()
     {
-        return $this->hasMany(Category::class,'user_id');
+        return $this->hasMany(Category::class, 'user_id');
     }
+
+
+
+
+
 }
 
 

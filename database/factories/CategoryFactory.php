@@ -1,16 +1,14 @@
 <?php
 
 
+use App\Admin;
 use App\Category;
 use App\User;
 use Faker\Generator as Faker;
 
 $factory->define(Category::class, function (Faker $faker) {
-    $user = factory(User::class)->create();
-//    dd($user->id);
-    $user->roles()->attach(1);
     return [
-        'user_id' => $user->id,
+        'user_id' => $faker->randomElement(Admin::pluck('id')->toArray()),
         'description' => $faker->paragraph,
         'name' => $faker->word,
     ];

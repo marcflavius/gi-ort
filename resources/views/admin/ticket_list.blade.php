@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="container-fluid">
     <div class="row align-self-stretch justify-content-md-center">
         <div class="col-md-12 my-3">

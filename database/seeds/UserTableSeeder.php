@@ -4,8 +4,9 @@
 use App\User;
 use Illuminate\Database\Seeder;
 
-class UserTableSeeder extends Seeder
-{
+
+class UserTableSeeder extends Seeder {
+
     /**
      * Run the database seeds.
      *
@@ -13,12 +14,15 @@ class UserTableSeeder extends Seeder
      */
     public function run()
     {
-        
-//        factory(User::class)->create([
-//            'name' => 'marc',
-//            'email' => 'super@app.com',
-//            'password' =>  bcrypt('password')
-//        ]);
+        for ($i = 0; $i < 10; $i++) {
+            factory(User::class)->create()->roles()->attach(1);
+        }
+        for ($i = 0; $i < 10; $i++) {
+            factory(User::class)->create()->roles()->attach(2);
+        }
+        for ($i = 0; $i < 10; $i++) {
+            factory(User::class)->create()->roles()->attach(3);
+        }
     }
-    
+
 }
