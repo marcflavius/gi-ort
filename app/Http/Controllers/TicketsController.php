@@ -39,7 +39,12 @@ class TicketsController extends Controller {
      */
     public function create()
     {
-
+        $user = Auth::user();
+        $categories = Category::all();
+        $categoryIdArray = $categories->pluck('name', 'id');
+        $priorityArray = ['faible' => 'faible', 'normal' => 'normal', 'urgent' => 'urgent'];
+        $statusArray = ['en cours' => 'en cours', 'fermé' => 'fermé', 'ouvert' => 'ouvert'];
+        return view('tickets.create', compact('user', 'categories', 'categoryIdArray', 'priorityArray', 'statusArray'));
     }
 
 
@@ -69,8 +74,7 @@ class TicketsController extends Controller {
         $ticket->user_id = Auth::user()->id;
         $ticket->category_id = $request->input('category_id');
         $ticket->save();
-        return redirect()->route('tickets.show',$ticket->user()->id);
-
+        return redirect()->route('tickets.show', $ticket->id);
     }
 
 
