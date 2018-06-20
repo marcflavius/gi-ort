@@ -80,7 +80,6 @@ class AdminCategoryController extends Controller
         ];
 
         $this->validate($request, $rules);
-        
         $ticket->update($request->all());
         return redirect()->route('admin.categories.show', ['id' => $category->id]);
     }
