@@ -11,14 +11,16 @@
  */
 
 
+use App\Admin;
 use App\Ticket;
+use App\User;
 
 
 Auth::routes();
+Route::get('t', function (){
+    return  User::technicians();
 
-
-
-
+});
 Route::get('/', function () {
 //    Auth::logout();
     //    return \Illuminate\Support\Facades\DB::table('tickets')->get();

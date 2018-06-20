@@ -6,12 +6,18 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Ticket;
 use Auth;
+use foo\bar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
 
 class TicketsController extends Controller {
 
+    public function __construct()
+        {
+            $this->middleware('auth');
+//            $this->middleware('role');
+        }
     /**
      * Display a listing of the resource.
      *
@@ -33,7 +39,7 @@ class TicketsController extends Controller {
      */
     public function create()
     {
-        //
+
     }
 
 
@@ -71,7 +77,7 @@ class TicketsController extends Controller {
     public function show($id)
     {
         $ticket = Ticket::find($id);
-        return view('show', compact('ticket'));
+        return view('tickets.show', compact('ticket'));
     }
 
 
@@ -90,7 +96,7 @@ class TicketsController extends Controller {
         $priorityArray = ['faible' => 'faible', 'normal' => 'normal', 'urgent' => 'urgent'];
         $statusArray = ['en cours' => 'en cours', 'fermé' => 'fermé', 'ouvert' => 'ouvert'];
 
-        return view('edit', compact('ticket', 'categories', 'categoryIdArray', 'priorityArray', 'statusArray'));
+        return view('tickets.edit', compact('ticket', 'categories', 'categoryIdArray', 'priorityArray', 'statusArray'));
     }
 
 
@@ -130,19 +136,9 @@ class TicketsController extends Controller {
      */
     public function destroy($id)
     {
-
-        $user = Auth::user();
-        $tickets = $user->tickets()->latest()->paginate(10);
-        $ticketsAll = Ticket::all();
-
-        $ticket = Ticket::findOrFail($id);
-        $ticket->delete();
-
-
-        return redirect()->route('tickets.index', compact('user', 'tickets', 'ticketsAll'));
-
+        $t = Ticket::findOrFail($id);
+        $t->destroy($id);
+        return redirect()->route('tickets.index');
     }
-
-
 
 }

@@ -33,18 +33,24 @@ class DatabaseSeeder extends Seeder {
          * create 20 users and  3 role
          * with admin technician and employee privilages
          *************************/
-        $this->call(RoleUserTableSeeder::class);
+        $this->call(UserTableSeeder::class);
+        $this->call(RolesTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
+
         $this->call(TicketsTableSeeder::class);
+//
         $admin = factory(User::class)->create([
             'email' => 'super@app.com',
             'password' => bcrypt('password'),
-            
+
         ]);
+        $admin->roles()->attach(1);
+
+
         factory(Ticket::class, 20)->create([
             'user_id' => $admin->id,
         ]);
-        
+
 
         if (env('DB_CONNECTION') === 'mysql') {
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
