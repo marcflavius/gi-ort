@@ -40,126 +40,19 @@
 						</tr>
 						</thead>
 						<tbody>
-						<tr>
-							<td style="width: 60%">
-                    <span>Titre du ticket :
-                      <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae pretium eros.
-                      In vitae pretium eros. Fusce ut purus vitae lectus tincidunt facilisis ac sit.</small>
-                    </span>
-							</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>1</td>
-							<td>Ouvert</td>
-						</tr>
-						<tr>
-							<td style="width: 60%">
-                    <span>Titre du ticket :
-                      <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae pretium eros.
-                      In vitae pretium eros. Fusce ut purus vitae lectus tincidunt facilisis ac sit.</small>
-                    </span>
-							</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>1</td>
-							<td>Ouvert</td>
-						</tr>
-						<tr>
-							<td style="width: 60%">
-                    <span>Titre du ticket :
-                      <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae pretium eros.
-                      In vitae pretium eros. Fusce ut purus vitae lectus tincidunt facilisis ac sit.</small>
-                    </span>
-							</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>1</td>
-							<td>Ouvert</td>
-						</tr>
-						<tr>
-							<td style="width: 60%">
-                    <span>Titre du ticket :
-                      <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae pretium eros.
-                      In vitae pretium eros. Fusce ut purus vitae lectus tincidunt facilisis ac sit.</small>
-                    </span>
-							</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>1</td>
-							<td>Ouvert</td>
-						</tr>
-						<tr>
-							<td style="width: 60%">
-                    <span>Titre du ticket :
-                      <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae pretium eros.
-                      In vitae pretium eros. Fusce ut purus vitae lectus tincidunt facilisis ac sit.</small>
-                    </span>
-							</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>1</td>
-							<td>Ouvert</td>
-						</tr>
-						<tr>
-							<td style="width: 60%">
-                    <span>Titre du ticket :
-                      <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae pretium eros.
-                      In vitae pretium eros. Fusce ut purus vitae lectus tincidunt facilisis ac sit.</small>
-                    </span>
-							</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>1</td>
-							<td>Ouvert</td>
-						</tr>
-						<tr>
-							<td style="width: 60%">
-                    <span>Titre du ticket :
-                      <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae pretium eros.
-                      In vitae pretium eros. Fusce ut purus vitae lectus tincidunt facilisis ac sit.</small>
-                    </span>
-							</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>1</td>
-							<td>Ouvert</td>
-						</tr>
-						<tr>
-							<td style="width: 60%">
-                    <span>Titre du ticket :
-                      <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae pretium eros.
-                      In vitae pretium eros. Fusce ut purus vitae lectus tincidunt facilisis ac sit.</small>
-                    </span>
-							</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>1</td>
-							<td>Ouvert</td>
-						</tr>
-						<tr>
-							<td style="width: 60%">
-                    <span>Titre du ticket :
-                      <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae pretium eros.
-                      In vitae pretium eros. Fusce ut purus vitae lectus tincidunt facilisis ac sit.</small>
-                    </span>
-							</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>1</td>
-							<td>Ouvert</td>
-						</tr>
-						<tr>
-							<td style="width: 60%">
-                    <span>Titre du ticket :
-                      <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae pretium eros.
-                      In vitae pretium eros. Fusce ut purus vitae lectus tincidunt facilisis ac sit.</small>
-                    </span>
-							</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>1</td>
-							<td>Ouvert</td>
-						</tr>
+						@foreach($tickets as $ticket)
+							<tr>
+								<td style="width: 60%">
+											<span>{{$ticket->objet}} :
+												<small>{{$ticket->description}}</small>
+											</span>
+								</td>
+								<td>{{$ticket->category->name}}</td>
+								<td>{{$ticket->user->name}}</td>
+								<td>{{$ticket->priority}}</td>
+								<td>{{$ticket->status}}</td>
+							</tr>
+						@endforeach
 						</tbody>
 					</table>
 				</div>
