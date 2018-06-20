@@ -130,7 +130,17 @@ class TicketsController extends Controller {
      */
     public function destroy($id)
     {
-        //
+
+        $user = Auth::user();
+        $tickets = $user->tickets()->latest()->paginate(10);
+        $ticketsAll = Ticket::all();
+
+        $ticket = Ticket::findOrFail($id);
+        $ticket->delete();
+
+
+        return redirect()->route('tickets.index', compact('user', 'tickets', 'ticketsAll'));
+
     }
 
 

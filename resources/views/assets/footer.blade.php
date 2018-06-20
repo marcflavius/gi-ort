@@ -1,4 +1,4 @@
-<footer class="footer text-white ">
+<footer class="footer p-4 text-white ">
     <div class="row bg-custom-primary">
         <div class="col-md-3">
             <h6>Solution mise en place par: </h6>
@@ -25,6 +25,4 @@
             </ul>
         </div>
     </div>
-
-
 </footer>
