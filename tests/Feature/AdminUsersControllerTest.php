@@ -18,7 +18,7 @@ class AdminUsersControllerTest extends TestCase
     {
         $this->withExceptionHandling();
         $user = factory(User::class)->create();
-        $user->roles()->attach(2);
+        $user->roles()->attach(1);
 
         $this->be($user);
         $data = factory(User::class)->raw();

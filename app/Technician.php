@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Technician extends User {
 
-    public static const  ROLE_ID = 2;
+    public const  ROLE_ID = 2;
     protected $table = 'users';
 
 

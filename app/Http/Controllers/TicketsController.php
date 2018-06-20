@@ -14,10 +14,12 @@ use Illuminate\Support\Facades\Input;
 class TicketsController extends Controller {
 
     public function __construct()
-        {
-            $this->middleware('auth');
-//            $this->middleware('role');
-        }
+    {
+        $this->middleware('auth');
+        //            $this->middleware('role');
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -58,15 +60,13 @@ class TicketsController extends Controller {
     public function store(Request $request)
     {
         $rules = [
-            'objet' => 'required',
+            'objet'       => 'required',
             'description' => 'required',
-            'status' => 'required',
-            'priority' => 'required',
+            'status'      => 'required',
+            'priority'    => 'required',
         ];
         $this->validate($request, $rules);
-
         $ticket = new Ticket();
-
         $ticket->objet = $request->input('objet');
         $ticket->description = $request->input('description');
         $ticket->status = $request->input('status');
@@ -87,6 +87,7 @@ class TicketsController extends Controller {
      */
     public function show($id)
     {
+
         $ticket = Ticket::find($id);
         return view('tickets.show', compact('ticket'));
     }
@@ -106,7 +107,6 @@ class TicketsController extends Controller {
         $categoryIdArray = $categories->pluck('name', 'id');
         $priorityArray = ['faible' => 'faible', 'normal' => 'normal', 'urgent' => 'urgent'];
         $statusArray = ['en cours' => 'en cours', 'fermé' => 'fermé', 'ouvert' => 'ouvert'];
-
         return view('tickets.edit', compact('ticket', 'categories', 'categoryIdArray', 'priorityArray', 'statusArray'));
     }
 
@@ -123,26 +123,21 @@ class TicketsController extends Controller {
     {
 
         $rules = [
-            'objet' => 'required',
+            'objet'       => 'required',
             'description' => 'required',
             'category_id' => 'required',
-            'priority' => 'required',
-            'status' => 'required'
+            'priority'    => 'required',
+            'status'      => 'required'
         ];
-        
-//        $this->validate($request, $rules);
-
+        //        $this->validate($request, $rules);
         $ticket->objet = $request->input('objet');
         $ticket->description = $request->input('description');
         $ticket->status = $request->input('status');
         $ticket->priority = $request->input('priority');
         $ticket->priority = $request->input('status');
         $ticket->update();
-
         return redirect()->route('tickets.show', ['id' => $ticket->id]);
-
     }
-
 
 
 }

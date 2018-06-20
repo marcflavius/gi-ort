@@ -69,7 +69,17 @@ class AdminCategoryController extends Controller
      */
     public function update(Request $request, $category)
     {
+        $rules = [
+            'description' => 'required',
+            'name' => 'required',
+        ];
 
+                $this->validate($request, $rules);
+        $category->description = $request->input('description');
+        $category->name = $request->input('name');
+        $category->user_id = aut()->user()->id;
+        $category->update();
+        return redirect()->route('categories.show', ['id' => $category->id]);
     }
 
     /**

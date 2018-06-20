@@ -17,9 +17,12 @@
 
   <body>
     @include('assets.nav')
+    <div style="background-color: red;">
+      {{--{{Auth::user()->roles()->first()->id}}--}}
+    </div>
+
     @yield('content')
     @include('assets.footer')
-
 
 
     <!-- Optional JavaScript -->

@@ -22,7 +22,7 @@
                     </div>
                     <div class="form-group">
                         {{ Form::label('status', 'Statut') }}
-                        {{ Form::select('status', $statusArray, '',['class' => 'form-control form-control-sm']) }}
+                        {{ Form::select('status', ['ouvert' => 'ouvert'], '',['class' => 'form-control form-control-sm']) }}
                     </div>
                     <div class="form-group">
                         {{ Form::label('priority', 'Priorité') }}

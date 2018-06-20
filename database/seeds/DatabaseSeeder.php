@@ -38,7 +38,7 @@ class DatabaseSeeder extends Seeder {
         $this->call(CategoriesTableSeeder::class);
 
         $this->call(TicketsTableSeeder::class);
-//
+//admin
         $admin = factory(User::class)->create([
             'email' => 'super@app.com',
             'password' => bcrypt('password'),
@@ -49,6 +49,30 @@ class DatabaseSeeder extends Seeder {
 
         factory(Ticket::class, 20)->create([
             'user_id' => $admin->id,
+        ]);
+//tech
+        $tech = factory(User::class)->create([
+            'email' => 'tech@app.com',
+            'password' => bcrypt('password'),
+
+        ]);
+        $tech->roles()->attach(2);
+
+
+        factory(Ticket::class, 20)->create([
+            'user_id' => $tech->id,
+        ]);
+//employee
+        $emp = factory(User::class)->create([
+            'email' => 'emp@app.com',
+            'password' => bcrypt('password'),
+
+        ]);
+        $emp->roles()->attach(3);
+
+
+        factory(Ticket::class, 20)->create([
+            'user_id' => $emp->id,
         ]);
 
 
