@@ -81,6 +81,8 @@ class AdminTicketController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $c = Ticket::findOrFail($id);
+        $c->destroy($id);
+        return redirect()->route('admin.tickets.index');
     }
 }
