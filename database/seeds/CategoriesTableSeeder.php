@@ -13,6 +13,20 @@ class CategoriesTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Category::class,10)->create();
+
+        $cat = [
+            'Problème de bureau',
+            'Panne générale',
+            'Problème de souris',
+            'Problème internet',
+            ];
+
+        foreach ($cat as $key => $value) {
+            factory(Category::class)->create([
+                'name' => $value,
+            ]);
+
+        }        
+        
     }
 }

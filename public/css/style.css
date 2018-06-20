@@ -4,7 +4,6 @@ html {
 }
 body {
   margin-bottom: 60px; /* Margin bottom by footer height */
-
 }
 
 .primary-c-bg{
@@ -143,3 +142,16 @@ select.form-control-sm:not([size]):not([multiple]) {
   line-height: 60px;
 }
 
+.navbar {
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+}
+
+.card-body, .card {
+  background-color: #f2f2f2;
+  border: 1px #2E2E2E solid;
+  border-radius: 10px;
+  max-width: 800px;
+
+}

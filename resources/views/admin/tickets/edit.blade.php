@@ -34,7 +34,7 @@
                         {{ Form::label('description', 'Description du problème') }}
                         {{ Form::textarea('description', $ticket->description, ['class' => 'form-control', 'rows' => '5'])}}
                     </div>
-                    <a class="btn btn-block btn-primary">Cancel</a>
+                    <a class="btn btn-block btn-primary">Annuler</a>
                     {{ Form::submit('Save', ['class' => 'btn btn-block btn-submit btn-primary']) }}
                     {{ Form::close() }}
 				</div>

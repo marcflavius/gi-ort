@@ -89,4 +89,19 @@ class User extends Authenticatable {
     }
 
 
+    public function isAdmin()
+    {
+       return $this->roles()->first()->id === 1;
+    }
+
+    public function isTech()
+    {
+       return $this->roles()->first()->id === 2;
+    }
+
+    public function isEmp()
+    {
+       return $this->roles()->first()->id === 3;
+    }
+
 }

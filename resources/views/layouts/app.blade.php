@@ -17,8 +17,9 @@
 
   <body>
     @include('assets.nav')
-    <div style="background-color: red;">
-      {{--{{Auth::user()->roles()->first()->id}}--}}
+
+    <div class="clearfix" style="padding-top: 80px">
+
     </div>
 
     @yield('content')

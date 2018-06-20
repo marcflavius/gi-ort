@@ -2,12 +2,9 @@
 
 @section('content')
     <div class="container-fluid">
-    @if($errors->any())
-        @foreach($errors->getMessages() as $this_error)
-            <p style="color: red;">{{$this_error[0]}}</p>
-        @endforeach
-    @endif
+
     <div class="row align-self-stretch justify-content-md-center">
+        @include('assets.errors')
         <div class="col-md-7 my-5">
             <div class="card" style="">
                 <div class="card-body">
@@ -36,8 +33,9 @@
                         {{ Form::label('description', 'Description du problème') }}
                         {{ Form::textarea('description', $ticket->description, ['class' => 'form-control', 'rows' => '5'])}}
                     </div>
-                    <a class="btn btn-block btn-primary">Cancel</a>
-                    {{ Form::submit('Save', ['class' => 'btn btn-block btn-submit btn-primary']) }}
+                    <a href="{{route('tickets.index')}}" class="btn btn-block btn-primary">Annuler</a>
+
+                    {{ Form::submit('Soumettre', ['class' => 'btn btn-block btn-submit btn-primary']) }}
                     {{ Form::close() }}
                 </p>
                 </div>

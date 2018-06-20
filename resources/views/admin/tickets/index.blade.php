@@ -7,11 +7,10 @@
 				<div class="bg-light px-5 py-4">
 					<div class="row">
 						<div class="col-8">
-							<h2>Gestion des tickets: </h2><small>Crééz, mettez à jour ou supprimez des tickets</small>
+							<h2>Gestion des tickets: </h2>
+							<small>Crééz, mettez à jour ou supprimez des tickets</small>
 						</div>
-						<div class=" col-1 ml-auto">
-							<a class="px-2 btn btn-danger align-middle" href="{{route('admin.tickets.create')}}"> Créer un Ticket</a>
-						</div>
+
 					</div>
 				</div>
 			</div>
@@ -20,9 +19,20 @@
 			<div class="left-col col-md-2 my-4">
 				<div class="bo-menu p-0 bg-light">
 					<ul class="list-group list-group-flush">
-					<li class="list-group-item py-4"><a href="{{route('admin.categories.index')}}">Gestion des Catégories</a></li>
-						<li class="list-group-item py-4"><a href="{{route('admin.users.index')}}">Gestion des Utilisateurs</a></li>
-						<li class="list-group-item py-4"><a href="{{route('admin.tickets.index')}}">Gestion des Tickets</a></li>
+
+						@auth()
+							@if(auth()->user()->isAdmin())
+								<li class="list-group-item py-4"><a href="{{route('admin.categories.index')}}">Gestion des
+										Catégories</a></li>
+
+								<li class="list-group-item py-4"><a href="{{route('admin.users.index')}}">Gestion des
+										Utilisateurs</a></li>
+							@endif
+						@endauth
+
+						<li class="list-group-item py-4"><a href="{{route('admin.tickets.index')}}">Gestion des
+								Tickets</a></li>
+
 					</ul>
 				</div>
 			</div>
@@ -60,7 +70,11 @@
 						</tbody>
 					</table>
 				</div>
+
+				{{$tickets->links()}}
+
 			</div>
 		</div>
 	</div>
+
 @endSection

@@ -6,17 +6,24 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Ticket;
 use Auth;
-use foo\bar;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Input;
 
 
 class TicketsController extends Controller {
 
+
+    protected  $validate_rules = [
+        'objet'       => 'required|max:100',
+        'description' => 'required|max:400',
+        'category_id' => 'required|max:99',
+        'priority'    => 'required|max:10',
+        'status'      => 'required|max:10'
+    ];
+
     public function __construct()
     {
+
         $this->middleware('auth');
-        //            $this->middleware('role');
     }
 
 
@@ -28,7 +35,7 @@ class TicketsController extends Controller {
     public function index()
     {
         $user = Auth::user();
-        $tickets = $user->tickets()->latest()->paginate(10);
+        $tickets = $user->tickets()->latest()->paginate(5);
         $ticketsAll = Ticket::all();
         return view('tickets.index', compact('user', 'tickets', 'ticketsAll'));
     }
@@ -59,13 +66,8 @@ class TicketsController extends Controller {
      */
     public function store(Request $request)
     {
-        $rules = [
-            'objet'       => 'required',
-            'description' => 'required',
-            'status'      => 'required',
-            'priority'    => 'required',
-        ];
-        $this->validate($request, $rules);
+
+        $this->validate($request, $this->validate_rules);
         $ticket = new Ticket();
         $ticket->objet = $request->input('objet');
         $ticket->description = $request->input('description');
@@ -122,14 +124,8 @@ class TicketsController extends Controller {
     public function update(Request $request, Ticket $ticket)
     {
 
-        $rules = [
-            'objet'       => 'required',
-            'description' => 'required',
-            'category_id' => 'required',
-            'priority'    => 'required',
-            'status'      => 'required'
-        ];
-                $this->validate($request, $rules);
+
+                $this->validate($request, $tihs->validate_rules);
         $ticket->objet = $request->input('objet');
         $ticket->description = $request->input('description');
         $ticket->status = $request->input('status');

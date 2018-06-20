@@ -46,8 +46,8 @@
 							<label for="password">Mot de passe : </label>
 							<input type="password" class="form-control" id="password" placeholder="">
 						</div>
-						<a class="btn w-25 btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Save</a>
-						<a class="btn w-25 btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Cancel</a>
+						<a class="btn w-25 btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">SOumettre</a>
+						<a class="btn w-25 btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Annuler</a>
 					</form>
 				</div>
 			</div>
