@@ -52,10 +52,16 @@ class TicketsController extends Controller {
      */
     public function store(Request $request)
     {
-
+        $rules = [
+            'objet' => 'required',
+            'description' => 'required',
+            'status' => 'required',
+            'priority' => 'required',
+        ];
+        $this->validate($request, $rules);
 
         $ticket = new Ticket();
-        
+
         $ticket->objet = $request->input('objet');
         $ticket->description = $request->input('description');
         $ticket->status = $request->input('status');
@@ -63,6 +69,7 @@ class TicketsController extends Controller {
         $ticket->user_id = Auth::user()->id;
         $ticket->category_id = $request->input('category_id');
         $ticket->save();
+        return redirect()->route('tickets.show',$ticket->user()->id);
 
     }
 

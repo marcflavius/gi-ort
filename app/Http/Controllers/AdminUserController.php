@@ -24,7 +24,7 @@ class AdminUserController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +35,14 @@ class AdminUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $rules = [
+            'name' => 'required',
+            'email' => 'required',
+            'password' => 'required|confirmed',
+        ];
+        $this->validate($request, $rules);
+        $user = User::create($request->all());
+        return redirect()->route('admin.users.show',$user->id);
     }
 
     /**
