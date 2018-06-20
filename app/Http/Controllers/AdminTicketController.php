@@ -14,7 +14,7 @@ class AdminTicketController extends Controller
      */
     public function index()
     {
-        return view('admin.ticket_list');
+        return view('admin.tickets.index');
     }
 
     /**
@@ -58,7 +58,7 @@ class AdminTicketController extends Controller
     public function edit($id)
     {
         $ticket = Ticket::find($id);
-        return view('admin.ticket_edit')->with('ticket');
+        return view('admin.tickets.edit')->with('ticket');
     }
 
     /**

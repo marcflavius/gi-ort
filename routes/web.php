@@ -29,7 +29,11 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function(){
     Route::resource('tickets', 'TicketsController');
-    Route::resource('admin/users', 'AdminUserController');
-    Route::resource('admin/categories', 'AdminCategoryController');
-    Route::resource('admin/tickets', 'AdminTicketController');
+    
+    Route::group(['as' => 'admin.'], function(){
+        Route::resource('admin/tickets', 'AdminTicketController');
+        Route::resource('admin/users', 'AdminUserController');
+        Route::resource('admin/categories', 'AdminCategoryController');
+    });
+    
 });
