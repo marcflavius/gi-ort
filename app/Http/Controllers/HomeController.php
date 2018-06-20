@@ -23,6 +23,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        if (!!\Auth::user()) {
+        return redirect()->route('tickets.index');
+        }
         return view('home');
+
     }
 }

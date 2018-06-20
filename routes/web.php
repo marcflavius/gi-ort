@@ -23,9 +23,7 @@ Route::get('t', function (){
 
 // // espace public
 //page d'accueil
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', 'HomeController@index');
 
 // // espace priver
 Route::middleware(['auth'])->group(function(){
