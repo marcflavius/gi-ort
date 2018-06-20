@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<div class="row align-self-stretch justify-content-md-center">
-			<div class="left-col col-md-3 my-4">
+			<div class="left-col col-md-2 my-4">
 				<div class="bo-menu p-0 bg-light">
 					<ul class="list-group list-group-flush">
 					<li class="list-group-item py-4"><a href="{{route('admin.categories.index')}}">Gestion des Catégories</a></li>
@@ -26,8 +26,7 @@
 					</ul>
 				</div>
 			</div>
-			<!-- Right Panel : Ticket displaying here-->
-			<div class="right-col col col-md-9 my-4">
+			<div class="right-col col col-md-10 my-4">
 				<div class="p-0 bg-light">
 					<table class="table table-striped">
 						<thead>
@@ -37,20 +36,25 @@
 							<th scope="col">Ouvert par</th>
 							<th scope="col">Priorité</th>
 							<th scope="col">Statut</th>
+							<th scope="col">Action</th>
 						</tr>
 						</thead>
 						<tbody>
 						@foreach($tickets as $ticket)
 							<tr>
 								<td style="width: 60%">
-											<span>{{$ticket->objet}} :
-												<small>{{$ticket->description}}</small>
-											</span>
+									<span>{{$ticket->objet}} :
+										<small>{{$ticket->description}}</small>
+									</span>
 								</td>
 								<td>{{$ticket->category->name}}</td>
 								<td>{{$ticket->user->name}}</td>
 								<td>{{$ticket->priority}}</td>
 								<td>{{$ticket->status}}</td>
+								<td>
+									<a href="{{route('admin.tickets.show', ['ticket' => $ticket])}}">voir</a>
+									<a href="{{route('admin.tickets.edit', ['ticket' => $ticket])}}">editer</a>
+								</td>
 							</tr>
 						@endforeach
 						</tbody>

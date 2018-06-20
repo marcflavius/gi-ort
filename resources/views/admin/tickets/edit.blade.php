@@ -10,45 +10,33 @@
 			</div>
 		</div>
 		<div class="row align-self-stretch justify-content-md-center">
-			<div class="left-col col-md-3 my-4">
-				<div class="bo-menu p-0 bg-light">
-					<ul class="list-group list-group-flush">
-						<li class="list-group-item py-4">Gestion des Catégories</li>
-						<li class="list-group-item py-4">Gestion des Utilisateurs</li>
-						<li class="list-group-item py-4">Gestion des Tickets</li>
-					</ul>
-				</div>
-			</div>
-			<!-- Right Panel : Ticket displaying here-->
-			<div class="right-col col col-md-9 my-4">
+			<div class="right-col col col-md-6 my-4">
 				<div class="p-5 bg-light">
-					<form>
-						<div class="form-group">
-							<label for="group">Groupe</label>
-							<select class="form-control  form-control-sm" id="group">
-								<option>Toutes les catégories</option>
-							</select>
-						</div>
+					{{ Form::open(['route' => ['admin.tickets.update',$ticket->id], 'method' => 'PATCH']) }}
 
-						<div class="form-group">
-							<label for="lastname">Nom : </label>
-							<input type="text" class="form-control" id="lastname" placeholder="">
-						</div>
-						<div class="form-group">
-							<label for="firstname">Prénom : </label>
-							<input type="text" class="form-control" id="firstname" placeholder="">
-						</div>
-						<div class="form-group">
-							<label for="identifiant">Identifiant : </label>
-							<input type="text" class="form-control" id="identifiant" placeholder="">
-						</div>
-						<div class="form-group">
-							<label for="password">Mot de passe : </label>
-							<input type="password" class="form-control" id="password" placeholder="">
-						</div>
-						<a class="btn w-25 btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Save</a>
-						<a class="btn w-25 btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Cancel</a>
-					</form>
+                    <div class="form-group">
+                        {{ Form::label('objet', 'Titre du ticket') }}
+                        {{ Form::text('objet', $ticket->objet, ['class' => 'form-control'])}}
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('status', 'Statut') }}
+                        {{ Form::select('status', $statusArray, $ticket->status,['class' => 'form-control form-control-sm']) }}
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('priority', 'Priorité') }}
+                        {{ Form::select('priority', $priorityArray, $ticket->priority,['class' => 'form-control form-control-sm']) }}
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('category_id', 'Catégorie') }}
+                        {{ Form::select('category_id', $categoryIdArray, $ticket->category->id,['class' => 'form-control form-control-sm']) }}
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('description', 'Description du problème') }}
+                        {{ Form::textarea('description', $ticket->description, ['class' => 'form-control', 'rows' => '5'])}}
+                    </div>
+                    <a class="btn btn-block btn-primary">Cancel</a>
+                    {{ Form::submit('Save', ['class' => 'btn btn-block btn-submit btn-primary']) }}
+                    {{ Form::close() }}
 				</div>
 			</div>
 		</div>

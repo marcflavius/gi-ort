@@ -17,7 +17,7 @@
 			</div>
 		</div>
 		<div class="row align-self-stretch justify-content-md-center">
-			<div class="left-col col-md-3 my-4">
+			<div class="left-col col-md-2 my-4">
 				<div class="bo-menu p-0 bg-light">
 					<ul class="list-group list-group-flush">
 					<li class="list-group-item py-4"><a href="{{route('admin.categories.index')}}">Gestion des Catégories</a></li>
@@ -27,139 +27,31 @@
 				</div>
 			</div>
 			<!-- Right Panel : Ticket displaying here-->
-			<div class="right-col col col-md-9 my-4">
+			<div class="right-col col col-md-10 my-4">
 				<div class="p-0 bg-light">
 					<table class="table table-striped">
 						<thead>
 						<tr>
-							<th scope="col">Titre du ticket</th>
-							<th scope="col">Catégorie</th>
-							<th scope="col">Ouvert par</th>
-							<th scope="col">Priorité</th>
-							<th scope="col">Statut</th>
+							<th scope="col">Id</th>
+							<th scope="col">Nom</th>
+							<th scope="col">E-mail</th>
+							<th scope="col">Date de création</th>
+							<th scope="col">Action</th>
 						</tr>
 						</thead>
 						<tbody>
-						<tr>
-							<td style="width: 60%">
-                    <span>Titre du ticket :
-                      <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae pretium eros.
-                      In vitae pretium eros. Fusce ut purus vitae lectus tincidunt facilisis ac sit.</small>
-                    </span>
-							</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>1</td>
-							<td>Ouvert</td>
-						</tr>
-						<tr>
-							<td style="width: 60%">
-                    <span>Titre du ticket :
-                      <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae pretium eros.
-                      In vitae pretium eros. Fusce ut purus vitae lectus tincidunt facilisis ac sit.</small>
-                    </span>
-							</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>1</td>
-							<td>Ouvert</td>
-						</tr>
-						<tr>
-							<td style="width: 60%">
-                    <span>Titre du ticket :
-                      <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae pretium eros.
-                      In vitae pretium eros. Fusce ut purus vitae lectus tincidunt facilisis ac sit.</small>
-                    </span>
-							</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>1</td>
-							<td>Ouvert</td>
-						</tr>
-						<tr>
-							<td style="width: 60%">
-                    <span>Titre du ticket :
-                      <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae pretium eros.
-                      In vitae pretium eros. Fusce ut purus vitae lectus tincidunt facilisis ac sit.</small>
-                    </span>
-							</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>1</td>
-							<td>Ouvert</td>
-						</tr>
-						<tr>
-							<td style="width: 60%">
-                    <span>Titre du ticket :
-                      <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae pretium eros.
-                      In vitae pretium eros. Fusce ut purus vitae lectus tincidunt facilisis ac sit.</small>
-                    </span>
-							</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>1</td>
-							<td>Ouvert</td>
-						</tr>
-						<tr>
-							<td style="width: 60%">
-                    <span>Titre du ticket :
-                      <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae pretium eros.
-                      In vitae pretium eros. Fusce ut purus vitae lectus tincidunt facilisis ac sit.</small>
-                    </span>
-							</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>1</td>
-							<td>Ouvert</td>
-						</tr>
-						<tr>
-							<td style="width: 60%">
-                    <span>Titre du ticket :
-                      <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae pretium eros.
-                      In vitae pretium eros. Fusce ut purus vitae lectus tincidunt facilisis ac sit.</small>
-                    </span>
-							</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>1</td>
-							<td>Ouvert</td>
-						</tr>
-						<tr>
-							<td style="width: 60%">
-                    <span>Titre du ticket :
-                      <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae pretium eros.
-                      In vitae pretium eros. Fusce ut purus vitae lectus tincidunt facilisis ac sit.</small>
-                    </span>
-							</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>1</td>
-							<td>Ouvert</td>
-						</tr>
-						<tr>
-							<td style="width: 60%">
-                    <span>Titre du ticket :
-                      <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae pretium eros.
-                      In vitae pretium eros. Fusce ut purus vitae lectus tincidunt facilisis ac sit.</small>
-                    </span>
-							</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>1</td>
-							<td>Ouvert</td>
-						</tr>
-						<tr>
-							<td style="width: 60%">
-                    <span>Titre du ticket :
-                      <small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vitae pretium eros.
-                      In vitae pretium eros. Fusce ut purus vitae lectus tincidunt facilisis ac sit.</small>
-                    </span>
-							</td>
-							<td>Lorem Ipsum</td>
-							<td>Lorem Ipsum</td>
-							<td>1</td>
-							<td>Ouvert</td>
-						</tr>
+							@foreach($users as $user)
+								<tr>
+									<td>{{$user->id}}</td>
+									<td>{{$user->name}}</td>
+									<td>{{$user->email}}</td>
+									<td>{{$user->created_at}}</td>
+									<td>
+									<a href="{{route('admin.users.show', ['user' => $user])}}">voir</a>
+									<a href="{{route('admin.users.edit', ['user' => $user])}}">editer</a>
+								</td>
+								</tr>
+							@endforeach
 						</tbody>
 					</table>
 				</div>

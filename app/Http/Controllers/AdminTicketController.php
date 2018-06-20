@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Ticket;
+use App\Category;
 use Illuminate\Http\Request;
 
 class AdminTicketController extends Controller
@@ -14,7 +15,8 @@ class AdminTicketController extends Controller
      */
     public function index()
     {
-        return view('admin.tickets.index');
+        $tickets = Ticket::all();
+        return view('admin.tickets.index', compact('tickets'));
     }
 
     /**
@@ -24,7 +26,12 @@ class AdminTicketController extends Controller
      */
     public function create()
     {
-        //
+        $user = Auth::user();
+        $categories = Category::all();
+        $categoryIdArray = $categories->pluck('name', 'id');
+        $priorityArray = ['faible' => 'faible', 'normal' => 'normal', 'urgent' => 'urgent'];
+        $statusArray = ['en cours' => 'en cours', 'fermé' => 'fermé', 'ouvert' => 'ouvert'];
+        return view('admin.tickets.create', compact('user', 'categories', 'categoryIdArray', 'priorityArray', 'statusArray'));
     }
 
     /**
@@ -46,7 +53,8 @@ class AdminTicketController extends Controller
      */
     public function show($id)
     {
-        //
+        $ticket = Ticket::find($id);
+        return view('admin.tickets.show', compact('ticket'));
     }
 
     /**
@@ -58,7 +66,12 @@ class AdminTicketController extends Controller
     public function edit($id)
     {
         $ticket = Ticket::find($id);
-        return view('admin.tickets.edit')->with('ticket');
+        $categories = Category::all();
+        $categoryIdArray = $categories->pluck('name', 'id');
+        $priorityArray = ['faible' => 'faible', 'normal' => 'normal', 'urgent' => 'urgent'];
+        $statusArray = ['en cours' => 'en cours', 'fermé' => 'fermé', 'ouvert' => 'ouvert'];
+
+        return view('admin.tickets.edit', compact('ticket', 'categories', 'categoryIdArray', 'priorityArray', 'statusArray'));
     }
 
     /**
@@ -68,9 +81,21 @@ class AdminTicketController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Ticket $ticket)
     {
-        //
+        $rules = [
+            'objet' => 'required',
+            'description' => 'required',
+            'category_id' => 'required',
+            'priority' => 'required',
+            'status' => 'required'
+        ];
+        
+        $this->validate($request, $rules);
+
+        $ticket->update($request->all());
+
+        return redirect()->route('admin.tickets.show', ['id' => $ticket->id]);
     }
 
     /**
