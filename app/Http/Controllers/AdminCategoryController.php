@@ -80,6 +80,8 @@ class AdminCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $c = Category::findOrFail($id);
+        $c->destroy($id);
+        return redirect()->route('categories.index');
     }
 }

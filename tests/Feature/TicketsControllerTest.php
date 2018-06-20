@@ -102,4 +102,3 @@ class TicketsControllerTest extends Feature {
     }
 
 }
-    

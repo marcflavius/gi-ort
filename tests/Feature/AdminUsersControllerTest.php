@@ -31,6 +31,16 @@ class AdminUsersControllerTest extends TestCase
 
     }
 
+
+
+    /**
+     * @test
+     * @group UserFeature
+     */
+    public function un_administrateur_peut_supprimer_tous_les_utilisateurs()
+    {
+
+    }
     /**
      * @test
      * @group UserFeature
