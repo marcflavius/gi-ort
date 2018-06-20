@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 
 
 
-class CategoriesControllerTest extends TestCase
+class AdminCategoriesControllerTest extends TestCase
 {
 
     /**

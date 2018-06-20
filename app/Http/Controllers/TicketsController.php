@@ -117,6 +117,7 @@ class TicketsController extends Controller {
      */
     public function update(Request $request, Ticket $ticket)
     {
+
         $rules = [
             'objet' => 'required',
             'description' => 'required',
@@ -125,9 +126,14 @@ class TicketsController extends Controller {
             'status' => 'required'
         ];
         
-        $this->validate($request, $rules);
+//        $this->validate($request, $rules);
 
-        $ticket->update($request->all());
+        $ticket->objet = $request->input('objet');
+        $ticket->description = $request->input('description');
+        $ticket->status = $request->input('status');
+        $ticket->priority = $request->input('priority');
+        $ticket->priority = $request->input('status');
+        $ticket->update();
 
         return redirect()->route('tickets.show', ['id' => $ticket->id]);
 

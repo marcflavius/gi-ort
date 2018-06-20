@@ -15,21 +15,23 @@ use App\Admin;
 use App\Ticket;
 use App\User;
 
-
+// protection de l'application
 Auth::routes();
 Route::get('t', function (){
-    return  User::technicians();
-
+    return User::all();
 });
+
+// // espace public
+//page d'accueil
 Route::get('/', function () {
-//    Auth::logout();
-    //    return \Illuminate\Support\Facades\DB::table('tickets')->get();
     return view('home');
 });
 
+// // espace priver
 Route::middleware(['auth'])->group(function(){
+
     Route::resource('tickets', 'TicketsController');
-    
+
     Route::group(['as' => 'admin.'], function(){
         Route::resource('admin/tickets', 'AdminTicketController');
         Route::resource('admin/users', 'AdminUserController');
