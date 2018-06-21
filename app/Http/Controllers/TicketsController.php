@@ -30,10 +30,15 @@ class TicketsController extends Controller {
     /**
      * Display a listing of the resource.
      *
+     * @param string $q
+     *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($q = 'en cours')
     {
+        $tickets = Ticket::where('status',$q)->paginate(5);
+        return view('tickets.index', compact('tickets'));
+
         $user = Auth::user();
         $tickets = $user->tickets()->latest()->paginate(5);
         $ticketsAll = Ticket::all();
@@ -134,7 +139,6 @@ class TicketsController extends Controller {
         $ticket->update();
         return redirect()->route('tickets.show', ['id' => $ticket->id]);
     }
-
 
 
 }

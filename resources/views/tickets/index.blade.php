@@ -5,14 +5,17 @@
     <div class="row align-self-stretch justify-content-md-center">
       <div class="content-top p-4 col-md-12  m-0">
         <h1>Mes demandes ouvertes:</h1>
-        <div class="d-flex flex-row mt-3">
-          <select class="form-control w-50 mr-3 form-control-sm">
-            <option>Toutes les catégories</option>
-          </select>
-          <select class="form-control w-25 mr-3 form-control-sm">
-            <option>Statut: Ouvert</option>
-          </select>
-          <a class="btn btn-primary w-25 " data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">Valider</a>
+        <div class="col-md-10 auto">
+          <div class="d-flex flex-row mt-3 justify-content-end">
+            <select class="form-control w-25 mr-3 form-control-sm">
+              <option>Toutes les catégories</option>
+            </select>
+            <select class="form-control w-25 mr-3 form-control-sm">
+              <option>Statut: Ouvert</option>
+            </select>
+            <button class="btn btn-success" type="submit">Filter</button>
+          </div>
+
         </div>
       </div>
         <div class="left-col col-md-10 ">
@@ -35,7 +38,7 @@
               <tr class="ticket" data-content="{{$ticket->description}}">
                 <td style="width: 60%">
                   <span>{{$ticket->objet}} : </span>
-                  <small>{{$ticket->description}}</small>
+                  <small>{{str_limit($ticket->description,100,'...')}}</small>
                 </td>
                 <td>{{$ticket->category->name}}</td>
                 <td>{{$ticket->user->name}}</td>

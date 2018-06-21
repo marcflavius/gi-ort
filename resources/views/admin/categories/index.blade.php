@@ -2,19 +2,24 @@
 
 @section('content')
 	<div class="container-fluid">
-		<div class="row align-self-stretch justify-content-md-center">
-			<div class="col-md-12 my-3">
-				<div class="bg-light px-5 py-4">
-					<div class="row">
-						<div class="col-8">
-							<h2>Gestion des catégories: </h2><small>Crééz, mettez à jour ou supprimez des catégories</small>
+		<div class="row">
+			<div class="col-12">
+
+
+				<div class="card-body">
+					<div class="d-flex align-items-center">
+
+						<h2>Gestion des catégories: </h2>
+						<div class="ml-auto">
+							<a class="btn btn-success " href="{{route('admin.categories.create')}}"> Créer
+								une Catégorie</a>
 						</div>
-						<div class=" col-1 ml-auto">
-							<a class="px-2 btn btn-danger align-middle" href="{{route('admin.categories.create')}}"> Créer une Catégorie</a>
-						</div>
+
 					</div>
 				</div>
+
 			</div>
+
 		</div>
 		<div class="row align-self-stretch justify-content-md-center">
 			<div class="left-col col-md-2 my-4">
@@ -42,10 +47,10 @@
 						@foreach($categories as $category)
 							<tr>
 								<td>{{$category->name}}</td>
-								<td>{{$category->description}}</td>
+								<td>{{str_limit($category->description,100,'...')}}</td>
 								<td>{{$category->user->name}}</td>
 								<td>
-									<a href="{{route('admin.categories.show', ['category' => $category])}}">voir</a>
+									<a href="{{route('admin.categories.show', ['category' => $category])}}">voir</a> |
 									<a href="{{route('admin.categories.edit', ['category' => $category])}}">editer</a>
 								</td>
 							</tr>

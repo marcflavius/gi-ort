@@ -24,7 +24,7 @@
 					<span class="user-field">Description:
 						<hr>
 						<span class="ticket-description">
-							{{$ticket->description}}
+							{{str_limit($ticket->description,100,'...')}}
 						</span>
 					</span>
 					<hr>

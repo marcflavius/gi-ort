@@ -96,18 +96,6 @@ footer.footer {
 /* Customs ELEMENTS */
 
 input.btn-submit,
-a.btn {
-  height: 60px;
-  background-color: white;
-  border-radius: 0px;
-  border: 1px solid #2E2E2E;
-  padding: 0;
-  margin: 0;
-  color: black;
-   line-height: 60px;
-  display: inline-block;
-  vertical-align: middle;
-}
 
 .bg-custom-primary {
   background-color: #009688;
@@ -137,7 +125,7 @@ ul.collaborators li{
 select.form-control,
 select.form-control-sm,
 select.form-control-sm:not([size]):not([multiple]) {
-  height: 60px;
+  height: 30px;
   border-radius: 0;
   line-height: 60px;
 }
@@ -149,9 +137,10 @@ select.form-control-sm:not([size]):not([multiple]) {
 }
 
 .card-body, .card {
-  background-color: #f2f2f2;
-  border: 1px #2E2E2E solid;
-  border-radius: 10px;
-  max-width: 800px;
+  background-color: #dee2e6;
 
+}
+
+.auto {
+  margin: auto !important;
 }

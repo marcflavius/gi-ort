@@ -2,18 +2,21 @@
 
 @section('content')
 	<div class="container-fluid">
-		<div class="row align-self-stretch justify-content-md-center">
-			<div class="col-md-12 my-3">
-				<div class="bg-light px-5 py-4">
-					<div class="row">
-						<div class="col-8">
-							<h2>Gestion des tickets: </h2>
-							<small>Crééz, mettez à jour ou supprimez des tickets</small>
-						</div>
+		<div class="row">
+			<div class="col-12">
+
+
+				<div class="card-body">
+					<div class="d-flex align-items-center">
+
+						<h2>Gestion des tickets: </h2>
+						
 
 					</div>
 				</div>
+
 			</div>
+
 		</div>
 		<div class="row align-self-stretch justify-content-md-center">
 			<div class="left-col col-md-2 my-4">
@@ -54,7 +57,7 @@
 							<tr>
 								<td style="width: 60%">
 									<span>{{$ticket->objet}} :
-										<small>{{$ticket->description}}</small>
+										<small>{{str_limit($ticket->description,100,'...')}}</small>
 									</span>
 								</td>
 								<td>{{$ticket->category->name}}</td>
@@ -62,7 +65,7 @@
 								<td>{{$ticket->priority}}</td>
 								<td>{{$ticket->status}}</td>
 								<td>
-									<a href="{{route('admin.tickets.show', ['ticket' => $ticket])}}">voir</a>
+									<a href="{{route('admin.tickets.show', ['ticket' => $ticket])}}">voir</a> |
 									<a href="{{route('admin.tickets.edit', ['ticket' => $ticket])}}">editer</a>
 								</td>
 							</tr>

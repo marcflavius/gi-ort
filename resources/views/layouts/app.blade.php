@@ -18,7 +18,7 @@
   <body>
     @include('assets.nav')
 
-    <div class="clearfix" style="padding-top: 80px">
+    <div class="clearfix" style="padding-top: 100px">
 
     </div>
 

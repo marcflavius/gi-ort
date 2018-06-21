@@ -110,4 +110,6 @@ class AdminTicketController extends Controller
         $c->destroy($id);
         return redirect()->route('admin.tickets.index');
     }
+
+
 }
