@@ -3,7 +3,7 @@
 @section('content')
     <div class="container-fluid">
     <div class="row align-self-stretch justify-content-md-center">
-        <div class="col-md-7 my-5 d-flex justify-content-around">
+        <div class="col-md-7 d-flex justify-content-around">
             <div class="card" style="">
                 <div class="card-body">
         @include('assets.errors')
@@ -32,7 +32,7 @@
                     <a href="{{route('tickets.index')}}" class="btn btn-block btn-primary">Annuler</a>
                     
 
-                    {{ Form::submit('Save', ['class' => 'btn btn-block btn-submit btn-primary']) }}
+                    {{ Form::submit('Soumettre', ['class' => 'btn btn-block btn-submit btn-primary']) }}
                     {{ Form::close() }}
 
                 </p>
