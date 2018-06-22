@@ -144,3 +144,11 @@ select.form-control-sm:not([size]):not([multiple]) {
 .auto {
   margin: auto !important;
 }
+
+.alert-message {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  z-index: 10000 !important;
+  cursor: pointer;
+}

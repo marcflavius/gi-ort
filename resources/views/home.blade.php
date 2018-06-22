@@ -4,7 +4,7 @@
 <div class="container-fluid">
     <div class="row justify-content-md-center">
         <div class="col-12 login-banner bg-light  p-5">
-            <h1>Bienvenue, connectez vous !</h1>
+            <center><h2>Bienvenue, connectez vous !</h2></center>
         </div>
     </div>
     <div class="row justify-content-md-center">
@@ -25,7 +25,6 @@
                                     </span>
                         @endif
 
-                                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 
                             </div>
 
@@ -39,7 +38,7 @@
                                     </span>
                                 @endif
                             </div>
-                            <button type="submit" class="btn btn-block my-3">Connexion</button>
+                            <center><button type="submit" class="btn btn-success my-3 ">Connexion</button></center>
                         </form>
                         <small class="text-danger">Vous avez perdu vos identifiants? Contactez votre administrateur.</small>
                         </p>

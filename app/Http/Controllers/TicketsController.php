@@ -17,7 +17,6 @@ class TicketsController extends Controller {
         'description' => 'required|max:400',
         'category_id' => 'required|max:99',
         'priority'    => 'required|max:10',
-        'status'      => 'required|max:10'
     ];
 
     public function __construct()
@@ -34,15 +33,16 @@ class TicketsController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($q = 'en cours')
+    public function index()
     {
-        $tickets = Ticket::where('status',$q)->paginate(5);
-        return view('tickets.index', compact('tickets'));
+//       $tickets = \request()->get("status")  ?
+//         Ticket::where("status_id", \request()->get("status"))->get() :
+//         Ticket::paginate(5) ;
+         $tickets = Ticket::paginate(5);
 
+        $categories = Category::all();
         $user = Auth::user();
-        $tickets = $user->tickets()->latest()->paginate(5);
-        $ticketsAll = Ticket::all();
-        return view('tickets.index', compact('user', 'tickets', 'ticketsAll'));
+        return view('tickets.index', compact('user', 'tickets','categories'));
     }
 
 
@@ -76,12 +76,13 @@ class TicketsController extends Controller {
         $ticket = new Ticket();
         $ticket->objet = $request->input('objet');
         $ticket->description = $request->input('description');
-        $ticket->status = $request->input('status');
         $ticket->priority = $request->input('priority');
         $ticket->user_id = Auth::user()->id;
         $ticket->category_id = $request->input('category_id');
-        $ticket->save();
-        return redirect()->route('tickets.show', $ticket->id);
+        $ticket->save([
+            'status' => 'ouvert',
+        ]);
+        return redirect()->route('tickets.show', $ticket->id)->with('success','ticket créé avec succès !');
     }
 
 
@@ -138,6 +139,11 @@ class TicketsController extends Controller {
         $ticket->priority = $request->input('status');
         $ticket->update();
         return redirect()->route('tickets.show', ['id' => $ticket->id]);
+    }
+
+
+    public function search()
+    {
     }
 
 
