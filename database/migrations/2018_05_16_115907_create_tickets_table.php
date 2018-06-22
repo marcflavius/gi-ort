@@ -20,6 +20,7 @@ class CreateTicketsTable extends Migration
                 $table->enum('priority', ['faible','normal','urgent'])->default('normal');
             $table->string('objet',100);
             $table->text('description', 400);
+            $table->text('type', 100);
             $table->timestamps();
             
             $table->integer('category_id')->unsigned()->index();
