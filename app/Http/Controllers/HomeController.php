@@ -13,7 +13,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     /**
@@ -23,9 +23,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if (!!\Auth::user()) {
-        return redirect()->route('tickets.index');
-        }
+//        if (!!\Auth::user()) {
+//        return redirect()->route('tickets.index');
+//        }
         return view('home');
 
     }

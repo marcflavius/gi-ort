@@ -17,16 +17,13 @@ use App\User;
 
 // protection de l'application
 Auth::routes();
-Route::get('t', function (){
-    $q = request()->get('q');
-    $r = Ticket::where('status',$q)->get();
-    return view('test', compact('r'));
-    
-});
 
 // // espace public
 //page d'accueil
 Route::get('/', 'HomeController@index');
+//Route::get('/login', function (){
+//    return 1;
+//})->name('login');
 
 // // espace priver
 Route::middleware(['auth'])->group(function(){
