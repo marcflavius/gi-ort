@@ -45,7 +45,7 @@ class AdminUserController extends Controller
         ];
         $this->validate($request, $rules);
         $user = User::create($request->all());
-        return redirect()->route('admin.users.show',$user->id);
+        return redirect()->route('admin.users.show',$user->id)->with('success','L\'utilisateur à été crée avec succès');
     }
 
     /**

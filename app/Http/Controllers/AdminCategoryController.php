@@ -42,11 +42,17 @@ class AdminCategoryController extends Controller
      */
     public function store(Request $request)
     {
-
+//        dd(request()->input());
         $this->validate($request, $this->validate_rules);
+        
         $category = new Category();
-        $category->save(\request()->all());
-        return redirect()->route('categories.show', $category->id)->with('success','ticket créé avec succès !');
+
+        $category->description = $request->input('description');
+        $category->name = $request->input('name') ;
+        $category->user_id = \Auth::user()->id;
+
+        $category->save();
+        return redirect()->route('admin.categories.show', $category->id)->with('success','catégorie créé avec succès !');
     }
 
     /**

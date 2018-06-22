@@ -10,15 +10,47 @@
 		</div>
 		<div class="row align-self-stretch justify-content-md-center">
 			<div class="right-col col col-md-6 my-4">
+
+				@include('assets.errors')
 				<div class="p-5 bg-light">
-					<span class="user-field">Nom:
-					</span><br>
-					<span class="user-field">email:
-					</span><br>
-					<span class="user-field">Mot de passe:
-					</span><br><br>
-					<hr>
-					{{--<a class="btn btn-block btn-primary" data-toggle="modal" data-target="#deleteConfirmationModal">Delete</a>--}}
+					{{ Form::open(['route' => ['admin.users.store']]) }}
+
+					<div class="form-group">
+						{{ Form::label('name', 'Nom de l\'utilisateur') }}
+						{{ Form::text('name', "", ['class' => 'form-control'])}}
+					</div>
+
+					<div class="form-group">
+						{{ Form::label('email', 'Email') }}
+						{{ Form::email('email', "", ['class' => 'form-control', 'rows' => '5']) }}
+					</div>
+
+
+					<div class="form-group row">
+						<label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Mot de passe') }}</label>
+
+						<div class="col-md-6">
+							<input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+
+							@if ($errors->has('password'))
+								<span class="invalid-feedback">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+							@endif
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirmer votre mot de passe') }}</label>
+
+						<div class="col-md-6">
+							<input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+						</div>
+					</div>
+
+					<a class="btn btn-block btn-primary">Annuler</a>
+					{{ Form::submit('Soumettre', ['class' => 'btn btn-block btn-submit btn-primary']) }}
+					{{ Form::close() }}
 				</div>
 			</div>
 			<!-- Modal -->

@@ -12,16 +12,13 @@
 		<div class="row align-self-stretch justify-content-md-center">
 			<div class="right-col col col-md-6 my-4">
 				<div class="p-5 bg-light">
-					{{ Form::open() }}
+					{{ Form::open(['route' => ['admin.categories.store']]) }}
 
 					<div class="form-group">
 						{{ Form::label('name', 'Nom de la catégorie') }}
 						{{ Form::text('name', "", ['class' => 'form-control'])}}
 					</div>
 
-					<div class="form-group">
-
-					</div>
 					<div class="form-group">
 						{{ Form::label('description', 'Description') }}
 						{{ Form::textarea('description', "", ['class' => 'form-control', 'rows' => '5']) }}
