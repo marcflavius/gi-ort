@@ -12,12 +12,13 @@ use Illuminate\Http\Request;
 class TicketController extends Controller {
 
 
-    protected  $validate_rules = [
+    protected $validate_rules = [
         'objet'       => 'required|max:100',
         'description' => 'required|max:400',
         'category_id' => 'required|max:99',
         'priority'    => 'required|max:10',
     ];
+
 
     public function __construct()
     {
@@ -35,14 +36,16 @@ class TicketController extends Controller {
      */
     public function index()
     {
-//       $tickets = \request()->get("status")  ?
-//         Ticket::where("status_id", \request()->get("status"))->get() :
-//         Ticket::paginate(5) ;
-         $tickets = Ticket::paginate(5);
-
+        
+        $tickets = request()->get('status') ?
+            Auth::user()->tickets()->latest()->paginate(5) :
+            Auth::user()->tickets()->where('status', request()->get('status'))->paginate(10);
+        
+        
+        $tickets_status = ["en_cours", "ouvert", "fermé"];
         $categories = Category::all();
         $user = Auth::user();
-        return view('tickets.index', compact('user', 'tickets','categories'));
+        return view('tickets.index', compact('user', 'tickets', 'categories', 'tickets_status'));
     }
 
 
@@ -82,7 +85,7 @@ class TicketController extends Controller {
         $ticket->save([
             'status' => 'ouvert',
         ]);
-        return redirect()->route('tickets.show', $ticket->id)->with('success','ticket créé avec succès !');
+        return redirect()->route('tickets.show', $ticket->id)->with('success', 'ticket créé avec succès !');
     }
 
 
@@ -131,7 +134,7 @@ class TicketController extends Controller {
     {
 
 
-                $this->validate($request, $tihs->validate_rules);
+        $this->validate($request, $tihs->validate_rules);
         $ticket->objet = $request->input('objet');
         $ticket->description = $request->input('description');
         $ticket->status = $request->input('status');

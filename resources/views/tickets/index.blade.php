@@ -13,17 +13,18 @@
 							<div class="align-items-center d-flex flex-row justify-content-end">
 								<span class="mr-3">catégories:</span>
 								 <select name="category" class="form-control mr-3 form-control-sm">
-									<option>Toutes</option>
+									<option value="0">Toutes</option>
 									@foreach($categories as $category)
 										<option value="{{$category->id}}">{{$category->name}}</option>
 									@endforeach
 
 								</select>
 								<span class="mr-3">status:</span> <select name="status"  class="form-control mr-3 form-control-sm">
-									<option>Touts</option>
-									@foreach($tickets as $ticket)
-										<option value="{{$ticket->id}}">{{$ticket->name}}</option>
-									@endforeach
+									<option value="0">Tous</option>
+								@foreach($tickets_status as $value)
+										<option value="{{$value}}">{{str_replace('_',' ',$value)}}</option>
+									
+								@endforeach
 								</select>
 								<input type="submit" value="Filtre" class="btn btn-success ">
 							</div>
@@ -51,6 +52,7 @@
 									<th scope="col">Ouvert par</th>
 									<th scope="col">Priorité</th>
 									<th scope="col">Statut</th>
+									<th scope="col">Date de création</th>
 									<th scope="col">Action</th>
 								</tr>
 								</thead>
@@ -65,6 +67,7 @@
 										<td>{{$ticket->user->name}}</td>
 										<td>{{$ticket->priority}}</td>
 										<td>{{$ticket->status}}</td>
+										<td>{{$ticket->created_at}}</td>
 										<td><a href="{{route('tickets.show', ['ticket' => $ticket])}}">voir</a></td>
 									</tr>
 								@endforeach

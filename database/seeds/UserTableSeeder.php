@@ -14,13 +14,13 @@ class UserTableSeeder extends Seeder {
      */
     public function run()
     {
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 1; $i++) {
             factory(User::class)->create()->roles()->attach(1);
         }
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 1; $i++) {
             factory(User::class)->create()->roles()->attach(2);
         }
-        for ($i = 0; $i < 10; $i++) {
+        for ($i = 0; $i < 1; $i++) {
             factory(User::class)->create()->roles()->attach(3);
         }
     }

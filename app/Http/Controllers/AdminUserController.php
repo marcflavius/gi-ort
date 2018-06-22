@@ -44,7 +44,12 @@ class AdminUserController extends Controller
             'password' => 'required|confirmed',
         ];
         $this->validate($request, $rules);
-        $user = User::create($request->all());
+        $user = new User;
+        $user->name =  $request->input('name');
+        $user->email =  $request->input('email');
+        $user->password =  bcrypt($request->input('password'));
+
+        $user->save();
         return redirect()->route('admin.users.show',$user->id)->with('success','L\'utilisateur à été crée avec succès');
     }
 

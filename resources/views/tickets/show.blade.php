@@ -31,11 +31,16 @@
 							</p>
 
 
-                            <br>
-                            <a class="btn btn-block btn-primary" href="{{route('tickets.edit', ['ticket' => $ticket])}}" role="button" >Editer</a>
+							<br>
+							<div class="d-flex row">
 
-                        </div>
-                    </div>
+								<a class="btn col-6 btn-primary" href="{{route('tickets.edit', ['ticket' => $ticket])}}" role="button" >Editer</a>
+								<a class="btn col-6  btn-warning" href="{{route('tickets.index', ['ticket' => $ticket])}}" role="button" >Retour</a>
+
+							</div>
+
+						</div>
+					</div>
 
 					<br><br>
 				</div>

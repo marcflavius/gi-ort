@@ -55,11 +55,13 @@
 										'method' => 'DELETE'
 										])
 								}}
-								<button type="submit" class="btn btn-block btn-primary" data-toggle="collapse"
-								        href="#collapseExample" role="button" aria-expanded="false"
-								        aria-controls="collapseExample">Delete
-								</button>
-								{{ Form::close()}}
+									<div class="d-flex row">
+
+										<a class="btn col-6 btn-primary" href="{{route('admin.tickets.destroy', ['ticket' => $ticket])}}" role="button" >Delete</a>
+										<a class="btn col-6  btn-warning" href="{{route('admin.tickets.index', ['ticket' => $ticket])}}" role="button" >Annuler</a>
+
+									</div>
+{{ Form::close()}}
 								@endif
 							@endauth
 						</div>

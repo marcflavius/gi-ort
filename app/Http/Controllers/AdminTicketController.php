@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Ticket;
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class AdminTicketController extends Controller
 {
@@ -15,6 +17,8 @@ class AdminTicketController extends Controller
      */
     public function index()
     {
+        \request()->get('status');
+        
         $tickets = Ticket::paginate(5);
         return view('admin.tickets.index', compact('tickets'));
     }
