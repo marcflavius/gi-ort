@@ -36,11 +36,29 @@ class TicketController extends Controller {
      */
     public function index()
     {
-        
-        $tickets = request()->get('status') ?
-            Auth::user()->tickets()->latest()->paginate(5) :
-            Auth::user()->tickets()->where('status', request()->get('status'))->paginate(10);
-        
+        if(request()->get('status') || request()->get('category')){
+            
+            if(request()->get('category') && !request()->get('status')){
+                $tickets = Auth::user()->tickets()
+                ->where('category_id', request()
+                ->get('category'))->paginate(10);
+            }
+            if(request()->get('status') && !request()->get('category')){
+                $tickets = Auth::user()->tickets()
+                    ->where('status', request()
+                    ->get('status'))->paginate(10);
+            }
+            if(request()->get('status') && request()->get('category')){
+                $tickets = Auth::user()->tickets()
+                    ->where('status', request()->get('status'))
+                    ->where('category_id', request()
+                    ->get('category'))->paginate(10);
+            }
+            
+        } else {
+            $tickets = Auth::user()->tickets()->latest()->paginate(10);
+        }
+
         
         $tickets_status = ["en_cours", "ouvert", "fermé"];
         $categories = Category::all();

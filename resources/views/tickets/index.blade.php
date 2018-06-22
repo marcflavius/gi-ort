@@ -10,24 +10,24 @@
 						<div class="ml-auto">
 							{{ Form::open( ['method' => 'GET']) }}
 							
-							<div class="align-items-center d-flex flex-row justify-content-end">
-								<span class="mr-3">catégories:</span>
-								 <select name="category" class="form-control mr-3 form-control-sm">
-									<option value="0">Toutes</option>
-									@foreach($categories as $category)
-										<option value="{{$category->id}}">{{$category->name}}</option>
-									@endforeach
+								<div class="align-items-center d-flex flex-row justify-content-end">
+									<span class="mr-3">catégories:</span>
+									<select name="category" class="form-control mr-3 form-control-sm">
+										<option value="0">Toutes</option>
+										@foreach($categories as $category)
+											<option value="{{$category->id}}">{{$category->name}}</option>
+										@endforeach
 
-								</select>
-								<span class="mr-3">status:</span> <select name="status"  class="form-control mr-3 form-control-sm">
-									<option value="0">Tous</option>
-								@foreach($tickets_status as $value)
-										<option value="{{$value}}">{{str_replace('_',' ',$value)}}</option>
-									
-								@endforeach
-								</select>
-								<input type="submit" value="Filtre" class="btn btn-success ">
-							</div>
+									</select>
+									<span class="mr-3">status:</span> 
+									<select name="status"  class="form-control mr-3 form-control-sm">
+										<option value="0">Tous</option>
+										@foreach($tickets_status as $value)
+											<option value="{{$value}}">{{str_replace('_',' ',$value)}}</option>	
+										@endforeach
+									</select>
+									<input type="submit" value="Filtre" class="btn btn-success ">
+								</div>
 
 							{{ Form::close()}}
 						</div>
@@ -41,8 +41,6 @@
 				<div class="row align-self-stretch justify-content-md-center">
 
 					<div class="col-md-12">
-
-
 						<div class="listing-tickets mt-3">
 							<table class="table table-striped">
 								<thead>
