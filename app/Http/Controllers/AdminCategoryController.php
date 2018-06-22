@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class AdminCategoryController extends Controller
 {
+    protected  $validate_rules = [
+        'name' => 'required|max:50',
+        'description'    => 'required|max:400',
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -38,6 +43,10 @@ class AdminCategoryController extends Controller
     public function store(Request $request)
     {
 
+        $this->validate($request, $this->validate_rules);
+        $category = new Category();
+        $category->save(\request()->all());
+        return redirect()->route('categories.show', $category->id)->with('success','ticket créé avec succès !');
     }
 
     /**

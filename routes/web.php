@@ -31,7 +31,7 @@ Route::get('/', 'HomeController@index');
 // // espace priver
 Route::middleware(['auth'])->group(function(){
 
-    Route::resource('tickets', 'TicketsController');
+    Route::resource('tickets', 'TicketController');
     Route::get('admin/tickes/get/{status}','TicketController@status' );
 
     Route::group(['as' => 'admin.'], function(){

@@ -9,7 +9,7 @@ use Auth;
 use Illuminate\Http\Request;
 
 
-class TicketsController extends Controller {
+class TicketController extends Controller {
 
 
     protected  $validate_rules = [

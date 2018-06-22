@@ -8,7 +8,7 @@ use App\User;
 use Faker\Factory as Faker;
 
 
-class AdminTicketsControllerTest extends Feature {
+class AdminTicketControllerTest extends Feature {
 
     protected $ticket;
 

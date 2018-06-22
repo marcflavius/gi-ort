@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
 
-class UserTicketsControllerTest extends TestCase {
+class UserTicketControllerTest extends TestCase {
 
     /**
      * @test
