@@ -22,6 +22,9 @@
 								<span class="user-field">Catégorie:
                                     <small>{{$ticket->category->name}}</small>
                                 </span><br><br>
+								<span class="user-field">Type:
+                                    <small>{{$ticket->type}}</small>
+                                </span><br><br>
 								<span class="user-field">Description:
                                 <hr>
                                   <span class="ticket-description">

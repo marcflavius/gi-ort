@@ -10,9 +10,24 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Ticket extends Model
 {
+    
     protected $with = ['category'];
 
     protected $fillable = ['objet', 'description', 'category_id', 'status', 'priority'];
+
+
+    /**
+     * @param $builder
+     * @param QueryFilter $queryFilters
+     *
+     * @return QueryFilter[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public function scopeSelect($builder, QueryFilter $queryFilters) //QueryFilter optional (custom) args
+    {
+
+//         Loop throw the query functions, adding their querys to the builder
+        return $queryFilters->apply($builder);
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -27,7 +42,5 @@ class Ticket extends Model
     {
         return $this->belongsTo(Category::class);
     }
-
-
-
+    
 }

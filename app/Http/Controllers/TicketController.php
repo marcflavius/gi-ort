@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 
+use Facades\App\Acme\PrintFx;
 use App\Category;
 use App\Ticket;
+use App\TicketFilters;
 use Auth;
 use Illuminate\Http\Request;
 
@@ -17,6 +19,7 @@ class TicketController extends Controller {
         'description' => 'required|max:400',
         'category_id' => 'required|max:99',
         'priority'    => 'required|max:10',
+        'type'        => 'required|max:50',
     ];
 
 
@@ -30,17 +33,13 @@ class TicketController extends Controller {
     /**
      * Display a listing of the resource.
      *
-     * @param string $q
+     * @param TicketFilters $filters
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(TicketFilters $filters )
     {
-        
-        $tickets = request()->get('status') ?
-            Auth::user()->tickets()->latest()->paginate(5) :
-            Auth::user()->tickets()->where('status', request()->get('status'))->paginate(10);
-        
+        $tickets = Auth::user()->tickets()->select($filters);
         
         $tickets_status = ["en_cours", "ouvert", "fermé"];
         $categories = Category::all();
@@ -82,6 +81,7 @@ class TicketController extends Controller {
         $ticket->priority = $request->input('priority');
         $ticket->user_id = Auth::user()->id;
         $ticket->category_id = $request->input('category_id');
+        $ticket->type = $request->input('type');
         $ticket->save([
             'status' => 'ouvert',
         ]);
@@ -134,7 +134,7 @@ class TicketController extends Controller {
     {
 
 
-        $this->validate($request, $tihs->validate_rules);
+        $this->validate($request, $this->validate_rules);
         $ticket->objet = $request->input('objet');
         $ticket->description = $request->input('description');
         $ticket->status = $request->input('status');
@@ -143,11 +143,6 @@ class TicketController extends Controller {
         $ticket->update();
         return redirect()->route('tickets.show', ['id' => $ticket->id]);
     }
-
-
-    public function search()
-    {
-    }
-
+    
 
 }

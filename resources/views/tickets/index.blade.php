@@ -9,40 +9,47 @@
 						<h2>Mes tickets:</h2>
 						<div class="ml-auto">
 							{{ Form::open( ['method' => 'GET']) }}
-							
+
 							<div class="align-items-center d-flex flex-row justify-content-end">
 								<span class="mr-3">catégories:</span>
-								 <select name="category" class="form-control mr-3 form-control-sm">
+								<select name="category" class="form-control mr-3 form-control-sm">
 									<option value="0">Toutes</option>
 									@foreach($categories as $category)
 										<option value="{{$category->id}}">{{$category->name}}</option>
 									@endforeach
+								</select>
 
+								<span class="mr-3">priority:</span>
+								<select name="category" class="form-control mr-3 form-control-sm">
+									<option value="0">Toutes</option>
+									@foreach($categories as $category)
+										<option value="{{$category->id}}">{{$category->name}}</option>
+									@endforeach
 								</select>
-								<span class="mr-3">status:</span> <select name="status"  class="form-control mr-3 form-control-sm">
+
+								<span class="mr-3">status:</span>
+								<select name="status"
+								        class="form-control mr-3 form-control-sm">
 									<option value="0">Tous</option>
-								@foreach($tickets_status as $value)
-										<option value="{{$value}}">{{str_replace('_',' ',$value)}}</option>
-									
-								@endforeach
+									@foreach($tickets_status as $key => $value)
+										@if (old('status') == $key)
+											<option value="{{ $value }}" selected>{{ $value }}</option>
+										@else
+											<option value="{{$value}}">{{str_replace('_',' ',$value)}}</option>
+										@endif
+									@endforeach
 								</select>
+
 								<input type="submit" value="Filtre" class="btn btn-success ">
 							</div>
-
 							{{ Form::close()}}
 						</div>
 					</div>
-
 				</div>
-
 			</div>
-
 			<div class="container-fluid">
 				<div class="row align-self-stretch justify-content-md-center">
-
 					<div class="col-md-12">
-
-
 						<div class="listing-tickets mt-3">
 							<table class="table table-striped">
 								<thead>
@@ -52,12 +59,14 @@
 									<th scope="col">Ouvert par</th>
 									<th scope="col">Priorité</th>
 									<th scope="col">Statut</th>
+									<th scope="col">Type</th>
 									<th scope="col">Date de création</th>
 									<th scope="col">Action</th>
 								</tr>
 								</thead>
 								<tbody>
 								@foreach($tickets as $ticket)
+
 									<tr class="ticket" data-content="{{$ticket->description}}">
 										<td style="width: 60%">
 											<span>{{$ticket->objet}} : </span>
@@ -67,18 +76,18 @@
 										<td>{{$ticket->user->name}}</td>
 										<td>{{$ticket->priority}}</td>
 										<td>{{$ticket->status}}</td>
+										<td>{{$ticket->type}}</td>
 										<td>{{$ticket->created_at}}</td>
 										<td><a href="{{route('tickets.show', ['ticket' => $ticket])}}">voir</a></td>
 									</tr>
 								@endforeach
+
 								</tbody>
 							</table>
 						</div>
-						{{$tickets->links()}}
+						{{--{{$tickets->links()}}--}}
 					</div>
 				</div>
 			</div>
-@endsection
-
-
-
+		</div>
+	</div>@endsection

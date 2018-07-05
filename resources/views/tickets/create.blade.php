@@ -16,6 +16,12 @@
                         {{ Form::label('objet', 'Titre du ticket') }}
                         {{ Form::text('objet', '', ['class' => 'form-control'])}}
                     </div>
+
+                    <div class="form-group">
+                        {{ Form::label('type', 'Type') }}
+                        {{ Form::select('type', ['demande' => 'demande','incide' => 'incident'], ['class' => 'form-control'])}}
+                    </div>
+                    
                     <div class="form-group">
                         {{ Form::label('priority', 'Priorité') }}
                         {{ Form::select('priority', $priorityArray, '',['class' => 'form-control form-control-sm']) }}
@@ -28,6 +34,7 @@
                         {{ Form::label('description', 'Description du problème') }}
                         {{ Form::textarea('description','', ['class' => 'form-control', 'rows' => '5'])}}
                     </div>
+
 
                     <a href="{{route('tickets.index')}}" class="btn btn-block btn-primary">Annuler</a>
                     
