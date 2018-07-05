@@ -58,9 +58,8 @@ class User extends Authenticatable {
 
     public function rr()
     {
-        //       return  $id = $this->id;
-        //       return  DB::select('select * from `users` inner join `role_user` on `users`.`id` = `role_user`.`user_id` inner join `roles` on `roles`.`id` = `role_user`.`role_id` where `users`.`id` = ?', ['id' => $id,]);
-        return User::findOrFail(31)->roles()->first()->id;
+              return  $id = $this->id;
+              return  DB::select('select * from `users` inner join `role_user` on `users`.`id` = `role_user`.`user_id` inner join `roles` on `roles`.`id` = `role_user`.`role_id` where `users`.`id` = ?', ['id' => $id,]);
     }
 
 

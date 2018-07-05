@@ -6,12 +6,19 @@ namespace App\Http\Controllers;
 use Facades\App\Acme\PrintFx;
 use App\Category;
 use App\Ticket;
+<<<<<<< Updated upstream
 use App\TicketFilters;
+=======
+use App\User;
+>>>>>>> Stashed changes
 use Auth;
+
 use Illuminate\Http\Request;
 
 
 class TicketController extends Controller {
+
+   
 
 
     protected $validate_rules = [
@@ -37,14 +44,53 @@ class TicketController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
+<<<<<<< Updated upstream
     public function index(TicketFilters $filters )
     {
         $tickets = Auth::user()->tickets()->select($filters);
+=======
+    public function index(Request $request)
+    {
+        $user = new User;
+
+        if(request()->get('status') || request()->get('category')){
+            
+            if(request()->get('category') && !request()->get('status')){
+                $tickets = (
+                    Auth::user()->isEmp() ? 
+                    ( Auth::user()->tickets() ) : 
+                    ( $user->tickets()->all() )
+                )
+                ->where('category_id', request()->get('category'))->latest()->paginate(10);
+            }
+            if(request()->get('status') && !request()->get('category')){
+                $tickets = (
+                    Auth::user()->isEmp() ? 
+                    ( Auth::user()->tickets() ) : 
+                    ( $user->tickets()->all() )
+                )
+                    ->where('status', request()->get('status'))->latest()->paginate(10);
+            }
+            if(request()->get('status') && request()->get('category')){
+                $tickets = (
+                    Auth::user()->isEmp() ? 
+                    ( Auth::user()->tickets() ) : 
+                    ( $user->tickets()->all() )
+                )
+                    ->where('status', request()->get('status'))
+                    ->where('category_id', request()->get('category'))->latest()->paginate(10);
+            }
+            
+        } else {
+            $tickets = $user->tickets()->latest()->paginate(10);
+        }
+
+>>>>>>> Stashed changes
         
         $tickets_status = ["en_cours", "ouvert", "fermé"];
         $categories = Category::all();
-        $user = Auth::user();
-        return view('tickets.index', compact('user', 'tickets', 'categories', 'tickets_status'));
+        $authUser = Auth::user();
+        return view('tickets.index', compact('user', 'authUser', 'tickets', 'categories', 'tickets_status'));
     }
 
 
