@@ -137,8 +137,9 @@ select.form-control-sm:not([size]):not([multiple]) {
 }
 
 .card-body, .card {
+  
   background-color: #dee2e6;
-
+  
 }
 
 .auto {
