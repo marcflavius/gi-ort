@@ -1,4 +1,4 @@
-<div class="modal-body">
+<div class="modal-body p-4">
 @auth
         @if(auth()->user()->isAdmin())
             {{ Form::open([
