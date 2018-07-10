@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function(){
         Route::resource('admin/tickets', 'AdminTicketController');
         Route::resource('admin/users', 'AdminUserController');
         Route::resource('admin/categories', 'AdminCategoryController');
+        Route::post('/users/import-users', 'AdminUserController@importCsv')->name('importUsers');
     });
     
 });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AdminUserController extends Controller
 {
@@ -108,5 +109,61 @@ class AdminUserController extends Controller
         $u = User::findOrFail($id);
         $u->destroy($id);
         return redirect()->route('admin.users.index');
+    }
+
+     /**
+     * 
+     */
+    public function csvToArray($filename = '', $delimiter = ';')
+    {
+        if (!file_exists($filename) || !is_readable($filename)){
+            return false;
+        }
+
+        $header = null;
+        $data = array();
+        if (($handle = fopen($filename, 'r')) !== false)
+        {
+            while (($row = fgetcsv($handle, 1000, $delimiter)) !== false)
+            {
+                if (!$header)
+                    $header = $row;
+                else
+                    $data[] = array_combine($header, $row);
+            }
+            
+            fclose($handle);
+        }
+
+        return $data;
+    }
+
+    /**
+     * 
+     */
+    public function importCsv()
+    {
+        $file = public_path('import/users.csv');
+
+        $customerArr = $this->csvToArray($file);
+
+        for ($i = 0; $i < count($customerArr); $i ++)
+        {
+            $name = $customerArr[$i]['enom'];
+            $mail = $customerArr[$i]['mail'];
+            $password = bcrypt($customerArr[$i]['login']);
+
+            $isInDatabase = User::where('name', $name)->get()->first();
+           
+           if($isInDatabase != null) {
+               User::insert(
+                ['name' => $name, 'email' => $mail, 'password' => $password]
+               );
+           } else {
+               User::where('name', $name)
+               ->update(['name' => $name, 'email' => $mail, 'password' => $password]);
+           }
+        }
+        return redirect()->route('admin.users.index'); 
     }
 }

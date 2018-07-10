@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container-fluid">
-    <div class="row align-self-stretch justify-content-md-center">
+    <div class="row align-se['route' => ['admin.categories.store']lf-stretch justify-content-md-center">
         <div class="col-md-7 d-flex justify-content-around">
             <div class="card my-5">
                 <div class="card-body">
