@@ -27,7 +27,7 @@
 	<script>
 		$('.delete-me').on('click', function () {
             deleteMe = $(this).attr('data-id');
-            $('.modal-dialog').
+            $('#delete-me').attr('action',window.location.href +'/'+deleteMe);
         })
 
 	</script>

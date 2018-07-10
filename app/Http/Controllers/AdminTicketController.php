@@ -118,10 +118,9 @@ class AdminTicketController extends Controller
      */
     public function destroy($id)
     {
-        dd(1);
         $c = Ticket::findOrFail($id);
         $c->destroy($id);
-        return redirect()->route('admin.tickets.index')->with('delete','deleted');
+        return redirect()->route('admin.tickets.index')->with('success','Le ticket à été supprimé avec succès');
     }
 
 
