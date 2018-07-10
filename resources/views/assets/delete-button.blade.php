@@ -13,10 +13,11 @@
                        type="submit"
                        value="Supprimer"
                 />
-				<input class="btn col-6  btn-warning"
+				<a href="{{route('admin.tickets.index')}}" class="btn col-6  btn-warning"
+                   data-dismiss="modal"
                        type="submit"
                        value="Annuler"
-                />
+                >Annuler</a>
 
 			</div>
             {{ Form::close()}}
