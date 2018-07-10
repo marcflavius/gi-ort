@@ -6,37 +6,9 @@
 			<div class="col-12">
 				<div class="card-body list-intro">
 					<div class="d-flex align-items-center">
-						<h3><i class="fas fa-check"></i> Vos tickets:</h3>
-						<div class="ml-auto">
-							{{ Form::open( ['method' => 'GET']) }}
-								<div class="align-items-center d-flex flex-row justify-content-end">
-									<span class="mr-3">catégories:</span>
-									<select name="category" class="form-control mr-3 px-3 form-control-sm">
-										<option value="0">Toutes</option>
-										@foreach($categories as $category)
-											<option {{request()->get('category') == $category->id ? 'selected' : ''}} 
-												value="{{$category->id}}">{{$category->name}}</option>
-										@endforeach
-									</select>
-									<span class="mr-3">status:</span> 
-									<select name="status" class="form-control mr-3 form-control-sm">
-										<option value="0">Tous</option>
-										@foreach($tickets_status as $value)
-											<option {{request()->get('status') == $value ? 'selected' : ''}} 
-												value="{{$value}}">{{str_replace('_',' ',$value)}}</option>	
-										@endforeach
-									</select>
-									<span class="mr-3">priority:</span>
-									<select name="category" class="form-control mr-3 form-control-sm">
-										<option value="0">Toutes</option>
-										@foreach($categories as $category)
-											<option value="{{$category->id}}">{{$category->name}}</option>
-										@endforeach
-									</select>
-									<input type="submit" value="Filtre" class="btn btn-success ">
-								</div>
-							{{ Form::close()}}
-						</div>
+
+						<h2>Mes tickets:</h2>
+					@include('assets.filter')
 					</div>
 				</div>
 			</div>
@@ -78,7 +50,7 @@
 								</tbody>
 							</table>
 						</div>
-						{{--{{$tickets->links()}}--}}
+						{{$tickets->links()}}
 					</div>
 				</div>
 			</div>
@@ -88,10 +60,10 @@
 		<script>
 			
 		$(document).ready(function(){
-			$(".text-status-ouvert").html('<i style=" color: green;" class="fas fa-battery-empty"></i>&nbsp;ouvert');
-			$(".text-status-fermé").html('<i style=" color: red;" class="fas fa-battery-full"></i>&nbsp;fermé');
-			$(".text-status-en_cours").html('<i style=" color: orange;" class="fas fa-battery-half"></i>&nbsp;en cours');
-			$(".text-priority-urgent").html('urgent&nbsp;<i style=" color: red;" class="fas fa-exclamation"></i> ');
-		});
+            $(".text-status-ouvert").html('<i style=" color: green;" class="fas fa-battery-empty"></i>&nbsp;ouvert');
+            $(".text-status-fermé").html('<i style=" color: red;" class="fas fa-battery-full"></i>&nbsp;fermé');
+            $(".text-status-en_cours").html('<i style=" color: orange;" class="fas fa-battery-half"></i>&nbsp;en cours');
+            $(".text-priority-urgent").html('urgent&nbsp;<i style=" color: red;" class="fas fa-exclamation"></i> ');
+        });
 		</script>
 	</div>@endsection

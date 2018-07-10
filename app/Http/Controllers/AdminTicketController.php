@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Ticket;
 use App\Category;
+use App\TicketFilters;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,12 +16,19 @@ class AdminTicketController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(TicketFilters $filters)
     {
-        \request()->get('status');
-        
-        $tickets = Ticket::paginate(5);
-        return view('admin.tickets.index', compact('tickets'));
+        $user = Auth::user();
+
+        $tickets = $user->tickets()->select($filters)->paginate(10);
+        $types = ["demande", "incident"];
+        $status = ["en_cours", "ouvert", "fermé"];
+        $priorities = ['faible','normal','urgent'];
+        $categories = Category::list();
+
+        return view('admin.tickets.index',
+            compact('user', 'tickets', 'categories', 'status','types','priorities'));
+
     }
 
     /**
@@ -112,7 +120,7 @@ class AdminTicketController extends Controller
     {
         $c = Ticket::findOrFail($id);
         $c->destroy($id);
-        return redirect()->route('admin.tickets.index');
+        return redirect()->route('admin.tickets.index')->with('delete','deleted');
     }
 
 

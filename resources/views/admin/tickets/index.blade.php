@@ -10,7 +10,7 @@
 					<div class="d-flex align-items-center">
 
 						<h2>Gestion des tickets: </h2>
-						
+						@include('assets.filter')
 
 					</div>
 				</div>
@@ -55,7 +55,7 @@
 						<tbody>
 						@foreach($tickets as $ticket)
 							<tr>
-								<td style="width: 60%">
+								<td style="width: 48%">
 									<span>{{$ticket->objet}} :
 										<small>{{str_limit($ticket->description,100,'...')}}</small>
 									</span>
@@ -64,16 +64,23 @@
 								<td>{{$ticket->user->name}}</td>
 								<td>{{$ticket->priority}}</td>
 								<td>{{$ticket->status}}</td>
-								<td>
+								<td style="width: 15%">
 									<a href="{{route('admin.tickets.show', ['ticket' => $ticket])}}">voir</a> |
 									<a href="{{route('admin.tickets.edit', ['ticket' => $ticket])}}">editer</a>
+									@auth
+										@if(auth()->user()->isAdmin())
+											| <a href="#" style="color:red" data-toggle="modal"
+												data-target="#deleteConfirmationModal">supprimer</a>
+
+										@endif
+									@endauth
 								</td>
 							</tr>
 						@endforeach
 						</tbody>
 					</table>
+				@include('assets.modal')
 				</div>
-
 				{{$tickets->links()}}
 
 			</div>

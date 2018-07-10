@@ -22,11 +22,11 @@ class Ticket extends Model
      *
      * @return QueryFilter[]|\Illuminate\Database\Eloquent\Collection
      */
-    public function scopeSelect($builder, QueryFilter $queryFilters) //QueryFilter optional (custom) args
+    public function scopeSelect($builder, QueryFilter $queryFilters)
     {
-
+        $queryFilters->apply($builder);
 //         Loop throw the query functions, adding their querys to the builder
-        return $queryFilters->apply($builder);
+        return $builder;
     }
 
     /**

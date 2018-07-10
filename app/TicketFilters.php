@@ -7,7 +7,7 @@ class TicketFilters extends QueryFilter {
 
 
     /**
-     * 
+     *
      */
     public function status($status = null)
     {
@@ -23,10 +23,16 @@ class TicketFilters extends QueryFilter {
             : $this->builder->where('category_id', $id);
     }
 
-    public function priority($id = null)
+    public function priority($priority = null)
     {
-        return $id === null ? $this->builder
-            : $this->builder->where('category_id', $id);
+        return $priority === null ? $this->builder
+            : $this->builder->where('priority', $priority);
+    }
+
+    public function type($type = null)
+    {
+        return $type === null ? $this->builder
+            : $this->builder->where('type', $type);
     }
 
 

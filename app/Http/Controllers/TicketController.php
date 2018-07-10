@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
-use Facades\App\Acme\PrintFx;
 use App\Category;
 use App\Ticket;
 use App\TicketFilters;
@@ -11,12 +9,8 @@ use Auth;
 
 use Illuminate\Http\Request;
 
-
-class TicketController extends Controller {
-
-   
-
-
+class TicketController extends Controller
+{
     protected $validate_rules = [
         'objet'       => 'required|max:100',
         'description' => 'required|max:400',
@@ -25,13 +19,11 @@ class TicketController extends Controller {
         'type'        => 'required|max:50',
     ];
 
-
     public function __construct()
     {
 
         $this->middleware('auth');
     }
-
 
     /**
      * Display a listing of the resource.
@@ -41,15 +33,18 @@ class TicketController extends Controller {
      * @return \Illuminate\Http\Response
      */
 
-    public function index(TicketFilters $filters )
+    public function index(TicketFilters $filters)
     {
-        $tickets = Auth::user()->tickets()->select($filters);        
-        $tickets_status = ["en_cours", "ouvert", "fermé"];
-        $categories = Category::all();
-        $authUser = Auth::user();
-        return view('tickets.index', compact('user', 'authUser', 'tickets', 'categories', 'tickets_status'));
-    }
 
+        $tickets    = Auth::user()->tickets()->select($filters)->paginate(5);
+        $types      = ["demande", "incident"];
+        $status     = ["en_cours", "ouvert", "fermé"];
+        $priorities = ['faible', 'normal', 'urgent'];
+        $categories = Category::list();
+        $user       = Auth::user();
+
+        return view('tickets.index', compact('user', 'tickets', 'categories', 'status', 'types', 'priorities'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -58,14 +53,14 @@ class TicketController extends Controller {
      */
     public function create()
     {
-        $user = Auth::user();
-        $categories = Category::all();
+        $user            = Auth::user();
+        $categories      = Category::all();
         $categoryIdArray = $categories->pluck('name', 'id');
-        $priorityArray = ['faible' => 'faible', 'normal' => 'normal', 'urgent' => 'urgent'];
-        $statusArray = ['en cours' => 'en cours', 'fermé' => 'fermé', 'ouvert' => 'ouvert'];
+        $priorityArray   = ['faible' => 'faible', 'normal' => 'normal', 'urgent' => 'urgent'];
+        $statusArray     = ['en cours' => 'en cours', 'fermé' => 'fermé', 'ouvert' => 'ouvert'];
+
         return view('tickets.create', compact('user', 'categories', 'categoryIdArray', 'priorityArray', 'statusArray'));
     }
-
 
     /**
      * Store a newly created resource in storage.
@@ -78,19 +73,19 @@ class TicketController extends Controller {
     {
 
         $this->validate($request, $this->validate_rules);
-        $ticket = new Ticket();
-        $ticket->objet = $request->input('objet');
+        $ticket              = new Ticket();
+        $ticket->objet       = $request->input('objet');
         $ticket->description = $request->input('description');
-        $ticket->priority = $request->input('priority');
-        $ticket->user_id = Auth::user()->id;
+        $ticket->priority    = $request->input('priority');
+        $ticket->user_id     = Auth::user()->id;
         $ticket->category_id = $request->input('category_id');
-        $ticket->type = $request->input('type');
+        $ticket->type        = $request->input('type');
         $ticket->save([
             'status' => 'ouvert',
         ]);
+
         return redirect()->route('tickets.show', $ticket->id)->with('success', 'ticket créé avec succès !');
     }
-
 
     /**
      * Display the specified resource.
@@ -103,9 +98,9 @@ class TicketController extends Controller {
     {
 
         $ticket = Ticket::find($id);
+
         return view('tickets.show', compact('ticket'));
     }
-
 
     /**
      * Show the form for editing the specified resource.
@@ -116,15 +111,15 @@ class TicketController extends Controller {
      */
     public function edit($id)
     {
-        $ticket = Ticket::find($id);
-        $user = Auth::user();
-        $categories = Category::all();
+        $ticket          = Ticket::find($id);
+        $user            = Auth::user();
+        $categories      = Category::all();
         $categoryIdArray = $categories->pluck('name', 'id');
-        $priorityArray = ['faible' => 'faible', 'normal' => 'normal', 'urgent' => 'urgent'];
-        $statusArray = ['en cours' => 'en cours', 'fermé' => 'fermé', 'ouvert' => 'ouvert'];
+        $priorityArray   = ['faible' => 'faible', 'normal' => 'normal', 'urgent' => 'urgent'];
+        $statusArray     = ['en cours' => 'en cours', 'fermé' => 'fermé', 'ouvert' => 'ouvert'];
+
         return view('tickets.edit', compact('ticket', 'user', 'categories', 'categoryIdArray', 'priorityArray', 'statusArray'));
     }
-
 
     /**
      * Update the specified resource in storage.
@@ -139,14 +134,13 @@ class TicketController extends Controller {
 
 
         $this->validate($request, $this->validate_rules);
-        $ticket->objet = $request->input('objet');
+        $ticket->objet       = $request->input('objet');
         $ticket->description = $request->input('description');
-        $ticket->status = $request->input('status');
-        $ticket->priority = $request->input('priority');
-        $ticket->priority = $request->input('status');
+        $ticket->status      = $request->input('status');
+        $ticket->priority    = $request->input('priority');
+        $ticket->priority    = $request->input('status');
         $ticket->update();
+
         return redirect()->route('tickets.show', ['id' => $ticket->id]);
     }
-    
-
 }

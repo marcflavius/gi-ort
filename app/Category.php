@@ -20,4 +20,10 @@ class Category extends Model
         return $this->hasMany(Category::class);
 
     }
+
+    public function scopeList($query)
+    {
+        return     $query->pluck('id');
+    }
+
 }
