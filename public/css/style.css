@@ -10,7 +10,11 @@ body {
   background-color: #212121;
 }
 
-body{background: #fefefe;}
+body{ 
+  background: linear-gradient(45deg, #eeeeee 12.5%, #efefef 12.5%, #efefef 37.5%, #eeeeee 37.5%, #eeeeee 62.5%, #efefef 62.5%, #efefef 87.5%, #eeeeee 87.5%);
+  background-size: 100px 100px;
+  background-position: 100px 50px;
+}
 /* Custom page CSS
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
@@ -39,6 +43,10 @@ div.content-top {
 .listing-tickets {
  
   
+}
+
+.table-striped{
+  background: white;
 }
 
 tr.ticket{
@@ -137,9 +145,14 @@ select.form-control-sm:not([size]):not([multiple]) {
 }
 
 .card-body, .card {
-  
-  background-color: #dee2e6;
-  
+  background-color: rgb(129, 134, 146);
+  color: white;
+  line-height: 1.8;
+
+}
+
+.list-intro {
+  background-color: rgb(110, 119, 124);
 }
 
 .auto {
@@ -152,4 +165,25 @@ select.form-control-sm:not([size]):not([multiple]) {
   bottom: 20px;
   z-index: 10000 !important;
   cursor: pointer;
+}
+
+.navbar-dark{
+  background: #212121;
+}
+
+.custom-card-header {
+  background-color: rgb(233, 231, 243);
+  color: black;
+  border-radius: 2px;
+  padding: .75rem 1.25rem;
+}
+
+.text-status-en_cours i {
+  color: orange;
+}
+.text-status-ouvert i {
+  color: green;
+}
+.text-status-fermé i{
+  color: red;
 }

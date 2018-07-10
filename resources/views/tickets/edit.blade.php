@@ -5,12 +5,15 @@
 
     <div class="row align-self-stretch justify-content-md-center">
         @include('assets.errors')
-        <div class="col-md-7 my-5">
-            <div class="card" style="">
+        <div class="col-md-7 d-flex justify-content-around">
+            <div class="card my-5" style="">
                 <div class="card-body">
-                <h3 class="card-title">Créer un ticket:</h3>
-                <h6 class="card-subtitle mb-2 text-muted">Utilisateur courant: Nom Prénom</h6>
-                <p class="card-text">
+                <div class="custom-card-header">
+                    <h3 class="card-title">Editer un ticket:</h3>
+                    <hr>
+                    <h6 class="card-subtitle mb-2 text-muted">Utilisateur courant: {{$user->name}}</h6>
+                </div>
+                    <p class="card-text">
                     {{ Form::open(['route' => ['tickets.update',$ticket->id], 'method' => 'PATCH']) }}
 
                     <div class="form-group">
@@ -33,9 +36,11 @@
                         {{ Form::label('description', 'Description du problème') }}
                         {{ Form::textarea('description', $ticket->description, ['class' => 'form-control', 'rows' => '5'])}}
                     </div>
-                    <a href="{{route('tickets.index')}}" class="btn btn-block btn-primary">Annuler</a>
+                    <div class="d-flex justify-content-md-center mt-4 row">
+                        <a href="{{route('tickets.index')}}"class="btn col-5 py-4 mr-4 btn-danger">Annuler</a>
 
-                    {{ Form::submit('Soumettre', ['class' => 'btn btn-block btn-submit btn-primary']) }}
+                        {{ Form::submit('Soumettre', ['class' => 'btn col-5 py-4 ml-4 btn-primary']) }}
+                    </div>
                     {{ Form::close() }}
                 </p>
                 </div>

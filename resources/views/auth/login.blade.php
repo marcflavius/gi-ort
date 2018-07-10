@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8 mt-5">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 
@@ -49,16 +49,14 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
+                        <div class="form-group d-flex justify-content-md-center row">
+                            <button type="submit" class="btn btn-block  col-8 py-4 mx-3 btn-primary">
+                                {{ __('Login') }}
+                            </button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
-                            </div>
+                            <a class="btn btn-block col-8 py-4 mx-3 btn-danger" href="{{ route('password.request') }}">
+                                {{ __('Forgot Your Password?') }}
+                            </a>
                         </div>
                     </form>
                 </div>

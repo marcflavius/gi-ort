@@ -117,11 +117,12 @@ class TicketController extends Controller {
     public function edit($id)
     {
         $ticket = Ticket::find($id);
+        $user = Auth::user();
         $categories = Category::all();
         $categoryIdArray = $categories->pluck('name', 'id');
         $priorityArray = ['faible' => 'faible', 'normal' => 'normal', 'urgent' => 'urgent'];
         $statusArray = ['en cours' => 'en cours', 'fermé' => 'fermé', 'ouvert' => 'ouvert'];
-        return view('tickets.edit', compact('ticket', 'categories', 'categoryIdArray', 'priorityArray', 'statusArray'));
+        return view('tickets.edit', compact('ticket', 'user', 'categories', 'categoryIdArray', 'priorityArray', 'statusArray'));
     }
 
 
