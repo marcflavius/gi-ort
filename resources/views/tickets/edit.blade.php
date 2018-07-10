@@ -22,20 +22,23 @@
                     </div>
                     <div class="form-group">
                         {{ Form::label('status', 'Statut') }}
-                        {{ Form::select('status', $statusArray, $ticket->status,['class' => 'form-control form-control-sm']) }}
+                        {{ Form::text('status', $ticket->status,['class' => 'form-control
+                        form-control-sm','readonly']) }}
                     </div>
                     <div class="form-group">
                         {{ Form::label('priority', 'Priorité') }}
-                        {{ Form::select('priority', $priorityArray, $ticket->priority,['class' => 'form-control form-control-sm']) }}
+                        {{ Form::text('priority', $ticket->priority,['class' => 'form-control
+                        form-control-sm','readonly']) }}
                     </div>
                     <div class="form-group">
-                        {{ Form::label('type', 'Priorité') }}
-                        {{ Form::select('type', $typeArray, $ticket->type,['class' => 'form-control
-                        form-control-sm']) }}
+                        {{ Form::label('type', 'Type') }}
+                        {{ Form::text('type', $ticket->type,['class' => 'form-control
+                        form-control-sm', 'readonly']) }}
                     </div>
                     <div class="form-group">
                         {{ Form::label('category_id', 'Catégorie') }}
-                        {{ Form::select('category_id', $categoryIdArray, $ticket->category->id,['class' => 'form-control form-control-sm']) }}
+                        {{ Form::text('category_id', $ticket->category->id,['class' => 'form-control
+                        form-control-sm','readonly']) }}
                     </div>
                     <div class="form-group">
                         {{ Form::label('description', 'Description du problème') }}

@@ -139,6 +139,7 @@ class TicketController extends Controller
         $ticket->objet       = $request->input('objet');
         $ticket->description = $request->input('description');
         $ticket->status      = $request->input('status');
+        $ticket->category_id      = $request->input('category_id');
         $ticket->priority    = $request->input('priority');
         $ticket->type    = $request->input('type');
         $ticket->update();
