@@ -115,10 +115,11 @@ class TicketController extends Controller
         $user            = Auth::user();
         $categories      = Category::all();
         $categoryIdArray = $categories->pluck('name', 'id');
+        $typeArray = ['incident' => 'incident', 'demande' => 'demande'];
         $priorityArray   = ['faible' => 'faible', 'normal' => 'normal', 'urgent' => 'urgent'];
         $statusArray     = ['en cours' => 'en cours', 'fermé' => 'fermé', 'ouvert' => 'ouvert'];
 
-        return view('tickets.edit', compact('ticket', 'user', 'categories', 'categoryIdArray', 'priorityArray', 'statusArray'));
+        return view('tickets.edit', compact('ticket', 'user', 'categories', 'categoryIdArray', 'priorityArray', 'statusArray','typeArray'));
     }
 
     /**
@@ -138,7 +139,7 @@ class TicketController extends Controller
         $ticket->description = $request->input('description');
         $ticket->status      = $request->input('status');
         $ticket->priority    = $request->input('priority');
-        $ticket->priority    = $request->input('status');
+        $ticket->type    = $request->input('type');
         $ticket->update();
 
         return redirect()->route('tickets.show', ['id' => $ticket->id]);

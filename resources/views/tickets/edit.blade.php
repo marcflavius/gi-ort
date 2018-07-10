@@ -4,10 +4,10 @@
     <div class="container-fluid">
 
     <div class="row align-self-stretch justify-content-md-center">
-        @include('assets.errors')
         <div class="col-md-7 d-flex justify-content-around">
             <div class="card my-5" style="">
                 <div class="card-body">
+        @include('assets.errors')
                 <div class="custom-card-header">
                     <h3 class="card-title">Editer un ticket:</h3>
                     <hr>
@@ -27,6 +27,11 @@
                     <div class="form-group">
                         {{ Form::label('priority', 'Priorité') }}
                         {{ Form::select('priority', $priorityArray, $ticket->priority,['class' => 'form-control form-control-sm']) }}
+                    </div>
+                    <div class="form-group">
+                        {{ Form::label('type', 'Priorité') }}
+                        {{ Form::select('type', $typeArray, $ticket->type,['class' => 'form-control
+                        form-control-sm']) }}
                     </div>
                     <div class="form-group">
                         {{ Form::label('category_id', 'Catégorie') }}
