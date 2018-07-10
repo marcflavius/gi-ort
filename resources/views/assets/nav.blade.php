@@ -1,6 +1,6 @@
 <nav class="navbar navbar-default navbar-fixed-top navbar-expand-lg navbar-dark primary-c-bg py-4">
     
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/">
         <h3 class="my-0">
             <i class="fas fa-eye"></i> &nbsp;
             Gestion des incidents

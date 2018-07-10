@@ -69,7 +69,8 @@
 									<a href="{{route('admin.tickets.edit', ['ticket' => $ticket])}}">editer</a>
 									@auth
 										@if(auth()->user()->isAdmin())
-											| <a href="#" style="color:red" data-toggle="modal"
+											| <a class="delete-me" data-id="{{$ticket->id}}" href="#" style="color:red"
+                                                  data-toggle="modal"
 												data-target="#deleteConfirmationModal">supprimer</a>
 
 										@endif

@@ -34,8 +34,9 @@
     <script src="{{asset('js/app.js')}}"></script>
     <script>
 	    $('.alert-message').on('click', function () {
-		    $(this).fadeOut();
-	    })
+            $(this).fadeOut();
+        });
     </script>
+	    @yield('js')
   </body>
 </html>

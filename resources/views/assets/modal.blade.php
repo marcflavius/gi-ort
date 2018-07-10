@@ -21,6 +21,14 @@
 						@include('assets.delete-button')
 					</div>
 				</div>
-
-
 </div>
+
+@section('js')
+	<script>
+		$('.delete-me').on('click', function () {
+            deleteMe = $(this).attr('data-id');
+            $('.modal-dialog').
+        })
+
+	</script>
+@endsection

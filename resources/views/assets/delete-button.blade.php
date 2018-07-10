@@ -2,7 +2,7 @@
 @auth
         @if(auth()->user()->isAdmin())
             {{ Form::open([
-                    'route' => ['admin.tickets.destroy',$ticket->id],
+                    'route' => ['admin.tickets.destroy',null],
                     'method' => 'DELETE'
                     ])
             }}
