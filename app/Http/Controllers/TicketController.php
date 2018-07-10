@@ -13,6 +13,7 @@ class TicketController extends Controller
 {
     protected $validate_rules = [
         'objet'       => 'required|max:100',
+        'status'       => 'required|max:100',
         'description' => 'required|max:400',
         'category_id' => 'required|max:99',
         'priority'    => 'required|max:10',
@@ -117,7 +118,7 @@ class TicketController extends Controller
         $categoryIdArray = $categories->pluck('name', 'id');
         $typeArray = ['incident' => 'incident', 'demande' => 'demande'];
         $priorityArray   = ['faible' => 'faible', 'normal' => 'normal', 'urgent' => 'urgent'];
-        $statusArray     = ['en cours' => 'en cours', 'fermé' => 'fermé', 'ouvert' => 'ouvert'];
+        $statusArray     = ['en cours' => 'en_cours', 'fermé' => 'fermé', 'ouvert' => 'ouvert'];
 
         return view('tickets.edit', compact('ticket', 'user', 'categories', 'categoryIdArray', 'priorityArray', 'statusArray','typeArray'));
     }

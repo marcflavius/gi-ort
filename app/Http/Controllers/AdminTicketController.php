@@ -11,6 +11,15 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminTicketController extends Controller
 {
+    protected $validate_rules = [
+        'objet'       => 'required|max:100',
+        'status' => 'required|max:100',
+        'description' => 'required|max:400',
+        'category_id' => 'required|max:99',
+        'priority'    => 'required|max:10',
+        'type'        => 'required|max:50',
+    ];
+
     /**
      * Display a listing of the resource.
      *
@@ -20,11 +29,12 @@ class AdminTicketController extends Controller
     {
         $user = Auth::user();
 
-        $tickets = $user->tickets()->select($filters)->paginate(10);
+        $tickets = Ticket::select($filters)->paginate(10);
         $types = ["demande", "incident"];
         $status = ["en_cours", "ouvert", "fermé"];
         $priorities = ['faible','normal','urgent'];
         $categories = Category::list();
+        $typeArray = ['incident' => 'incident', 'demande' => 'demande'];
 
         return view('admin.tickets.index',
             compact('user', 'tickets', 'categories', 'status','types','priorities'));
@@ -77,13 +87,15 @@ class AdminTicketController extends Controller
      */
     public function edit($id)
     {
-        $ticket = Ticket::find($id);
-        $categories = Category::all();
+        $ticket          = Ticket::find($id);
+        $user            = Auth::user();
+        $categories      = Category::all();
         $categoryIdArray = $categories->pluck('name', 'id');
-        $priorityArray = ['faible' => 'faible', 'normal' => 'normal', 'urgent' => 'urgent'];
-        $statusArray = ['en cours' => 'en cours', 'fermé' => 'fermé', 'ouvert' => 'ouvert'];
+        $typeArray = ['incident' => 'incident', 'demande' => 'demande'];
+        $priorityArray   = ['faible' => 'faible', 'normal' => 'normal', 'urgent' => 'urgent'];
+        $statusArray     = ['en_cours' => 'en cours', 'fermé' => 'fermé', 'ouvert' => 'ouvert'];
 
-        return view('admin.tickets.edit', compact('ticket', 'categories', 'categoryIdArray', 'priorityArray', 'statusArray'));
+        return view('admin.tickets.edit', compact('ticket', 'user', 'categories', 'categoryIdArray', 'priorityArray', 'statusArray','typeArray'));
     }
 
     /**
@@ -95,19 +107,17 @@ class AdminTicketController extends Controller
      */
     public function update(Request $request, Ticket $ticket)
     {
-        $rules = [
-            'objet' => 'required',
-            'description' => 'required',
-            'category_id' => 'required',
-            'priority' => 'required',
-            'status' => 'required'
-        ];
-        
-        $this->validate($request, $rules);
 
-        $ticket->update($request->all());
 
-        return redirect()->route('admin.tickets.show', ['id' => $ticket->id]);
+        $this->validate($request, $this->validate_rules);
+        $ticket->objet       = $request->input('objet');
+        $ticket->description = $request->input('description');
+        $ticket->status      = $request->input('status');
+        $ticket->priority    = $request->input('priority');
+        $ticket->type    = $request->input('type');
+        $ticket->update();
+
+        return redirect()->route('tickets.show', ['id' => $ticket->id]);
     }
     
     /**
