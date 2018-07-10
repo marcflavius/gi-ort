@@ -21,9 +21,6 @@ Auth::routes();
 // // espace public
 //page d'accueil
 Route::get('/', 'HomeController@index');
-//Route::get('/login', function (){
-//    return 1;
-//})->name('login');
 
 // // espace priver
 Route::middleware(['auth'])->group(function(){

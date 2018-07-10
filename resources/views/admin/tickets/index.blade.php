@@ -80,7 +80,7 @@
 						@endforeach
 						</tbody>
 					</table>
-				@include('assets.modal')
+				@include('assets.modal-delete-tickets')
 				</div>
 				{{$tickets->links()}}
 

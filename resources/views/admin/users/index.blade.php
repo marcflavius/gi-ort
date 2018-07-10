@@ -60,6 +60,15 @@
 								<td>
 									<a href="{{route('admin.users.show', ['user' => $user])}}">voir</a> |
 									<a href="{{route('admin.users.edit', ['user' => $user])}}">editer</a>
+									@auth
+										@if(auth()->user()->isAdmin())
+																										| <a
+																													class="delete-me" data-id="{{$user->id}}" href="#" style="color:red"
+																											 data-toggle="modal"
+																											 data-target="#deleteConfirmationModal">supprimer</a>
+
+										@endif
+									@endauth
 								</td>
 							</tr>
 						@endforeach
@@ -69,5 +78,6 @@
 				{{$users->links()}}
 			</div>
 		</div>
+		@include('assets.modal-delete-users')
 	</div>
 @endSection
