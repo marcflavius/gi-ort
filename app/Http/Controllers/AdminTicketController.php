@@ -51,7 +51,7 @@ class AdminTicketController extends Controller
         $categories = Category::all();
         $categoryIdArray = $categories->pluck('name', 'id');
         $priorityArray = ['faible' => 'faible', 'normal' => 'normal', 'urgent' => 'urgent'];
-        $statusArray = ['en cours' => 'en cours', 'fermé' => 'fermé', 'ouvert' => 'ouvert'];
+        $statusArray = ['en_cours' => 'en_cours', 'fermé' => 'fermé', 'ouvert' => 'ouvert'];
         return view('admin.tickets.create', compact('user', 'categories', 'categoryIdArray', 'priorityArray', 'statusArray'));
     }
 

@@ -119,7 +119,7 @@ class TicketController extends Controller
         $categoryIdArray = $categories->pluck('name', 'id');
         $typeArray = ['incident' => 'incident', 'demande' => 'demande'];
         $priorityArray   = ['faible' => 'faible', 'normal' => 'normal', 'urgent' => 'urgent'];
-        $statusArray     = ['en cours' => 'en_cours', 'fermé' => 'fermé', 'ouvert' => 'ouvert'];
+        $statusArray     = ['en_cours' => 'en_cours', 'fermé' => 'fermé', 'ouvert' => 'ouvert'];
 
         return view('tickets.edit', compact('ticket', 'user', 'categories', 'categoryIdArray', 'priorityArray', 'statusArray','typeArray'));
     }
