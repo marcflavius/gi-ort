@@ -1,11 +1,14 @@
 <div class="ml-auto">
 							{{ Form::open( ['method' => 'GET']) }}
 
-    <div id="filter-cat" class="align-items-center d-flex flex-row justify-content-end">
 							<span class="mr-3">catégories:</span>
-								{{ Form::select('category_id', 	$categoryIdArray, old('category_id'),
+    <div id="filter-cat" class="align-items-center d-flex flex-row justify-content-end">
+								{{ Form::select('category_id', 	$categoryIdArray, 0,
 								['class' =>
                                 'form-control mr-3 form-control-sm']) }}
+
+		
+
 		@section('js')
 			<script>
 				$("<option value='0'>Tous</option>").prependTo('#filter-cat > select');
