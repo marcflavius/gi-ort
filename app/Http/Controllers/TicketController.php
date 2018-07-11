@@ -41,10 +41,10 @@ class TicketController extends Controller
         $types      = ["demande", "incident"];
         $status     = ["en_cours", "ouvert", "fermé"];
         $priorities = ['faible', 'normal', 'urgent'];
-        $categories = Category::list();
+        $categoryIdArray = Category::list();
         $user       = Auth::user();
 
-        return view('tickets.index', compact('user', 'tickets', 'categories', 'status', 'types', 'priorities'));
+        return view('tickets.index', compact('user', 'tickets', 'categoryIdArray', 'status', 'types', 'priorities'));
     }
 
     /**

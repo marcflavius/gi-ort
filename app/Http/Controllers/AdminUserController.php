@@ -51,6 +51,7 @@ class AdminUserController extends Controller
         $user->password =  bcrypt($request->input('password'));
 
         $user->save();
+        $user->roles()->attach($request->input('role'));
         return redirect()->route('admin.users.show',$user->id)->with('success','L\'utilisateur à été crée avec succès');
     }
 
