@@ -11,10 +11,10 @@
 
 						<h2>Gestion des utilisateurs: </h2>
 						<div class="ml-auto">
-							{{Form::open(['route' => ['admin.importUsers']]) }}
-								<input type="submit" role="button" class="btn btn-warning " value="Procéder à l'import"/>
-							{{Form::close()}}
-							<a class="btn btn-success['route' => ['admin.categories.store']" role="button" href="{{route('admin.users.create')}}"> Créer
+							{{--{{Form::open(['route' => ['admin.importUsers']]) }}--}}
+								{{--<input type="submit" role="button" class="btn btn-warning " value="Procéder à l'import"/>--}}
+							{{--{{Form::close()}}--}}
+							<a class="btn btn-success" role="button" href="{{route('admin.users.create')}}"> Créer
 								un Utilisateur</a>
 						</div>
 						
