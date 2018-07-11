@@ -20,6 +20,7 @@
 								<thead>
 								<tr>
 									<th scope="col">Titre du ticket</th>
+									<th scope="col">Description</th>
 									<th scope="col">Catégorie</th>
 									<th scope="col">Ouvert par</th>
 									<th scope="col">Priorité</th>
@@ -32,11 +33,13 @@
 								<tbody>
 								@foreach($tickets as $ticket)
 
-									<tr class="ticket" data-content="{{$ticket->description}}">
-										<td>
-											<span><strong>{{$ticket->objet}} : </strong></span>
-											<small>{{str_limit($ticket->description,100,'...')}}</small>
-										</td>
+									<tr>
+								<td><span>{{$ticket->objet}} </span></td>
+								<td style="width: 48%">
+
+										<small>{{str_limit($ticket->description,100,'...')}}
+										</small>
+								</td>
 										<td>{{$ticket->category->name}}</td>
 										<td>{{$ticket->user->name}}</td>
 										<td class="text-priority-{{$ticket->priority}}">{{$ticket->priority}}</td>
