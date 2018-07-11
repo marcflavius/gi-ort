@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AdminUserController extends Controller
@@ -90,6 +91,7 @@ class AdminUserController extends Controller
     {
         $rules = [
             'email' => 'required|email|unique:users',
+            'user_id' => Auth::user()->id,
             'name' => 'required',
         ];
         $user = new User();
