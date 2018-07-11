@@ -48,13 +48,3 @@
 </div>
 </div>
 </div>
-
-@section('js')
-    <script>
-		$('.delete-me').on('click', function () {
-            deleteMe = $(this).attr('data-id');
-            $('#delete-me').attr('action', window.location.href + '/' + deleteMe);
-        })
-
-	</script>
-@endsection

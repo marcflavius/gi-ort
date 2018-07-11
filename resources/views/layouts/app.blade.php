@@ -37,6 +37,15 @@
             $(this).fadeOut();
         });
     </script>
+      <script>
+		$('.delete-me').on('click', function () {
+            console.log('ok');
+            deleteMe = $(this).attr('data-id');
+            $('#delete-me').attr('action', window.location.href + '/' + deleteMe);
+        })
+
+	</script>
 	    @yield('js')
+
   </body>
 </html>
