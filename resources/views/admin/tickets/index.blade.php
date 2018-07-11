@@ -45,6 +45,7 @@
 						<thead>
 						<tr>
 							<th scope="col">Titre du ticket</th>
+							<th scope="col">Description</th>
 							<th scope="col">Catégorie</th>
 							<th scope="col">Ouvert par</th>
 							<th scope="col">Priorité</th>
@@ -55,10 +56,11 @@
 						<tbody>
 						@foreach($tickets as $ticket)
 							<tr>
+								<td><span>{{$ticket->objet}} </span></td>
 								<td style="width: 48%">
-									<span>{{$ticket->objet}} :
-										<small>{{str_limit($ticket->description,100,'...')}}</small>
-									</span>
+
+										<small>{{str_limit($ticket->description,100,'...')}}
+										</small>
 								</td>
 								<td>{{$ticket->category->name}}</td>
 								<td>{{$ticket->user->name}}</td>
