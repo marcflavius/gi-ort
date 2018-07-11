@@ -22,10 +22,17 @@
 					<div class="form-group">
 
 					</div>
+
                     <div class="form-group">
                         {{ Form::label('email', 'Email de l\'utilisateur') }}
 						{{ Form::text('email', $user->email, ['class' => 'form-control', 'rows' =>
 						'5']) }}
+                    </div>
+
+                    <div class="form-group">
+                        {{ Form::label('role', 'Rôle de l\'utilisateur') }}
+						{{ Form::select('role',$roles ,$user->roles->first()->role_name, ['class' => 'form-control',
+						]) }}
                     </div>
 
                     <div class="form-group row">

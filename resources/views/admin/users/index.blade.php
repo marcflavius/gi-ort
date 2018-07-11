@@ -77,7 +77,6 @@
 						</tbody>
 					</table>
 				</div>
-				{{$users->links()}}
 			</div>
 		</div>
 		@include('assets.modal-delete-users')

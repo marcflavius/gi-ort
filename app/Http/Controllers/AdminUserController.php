@@ -75,7 +75,8 @@ class AdminUserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.users.edit',compact('user'));
+        $roles = ['1' => 'admin', '2' => 'tech', '3' => 'emp',];
+        return view('admin.users.edit',compact('user','roles'));
     }
 
     /**
