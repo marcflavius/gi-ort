@@ -87,14 +87,14 @@ class AdminUserController extends Controller
     public function update(Request $request, $user)
     {
         $rules = [
-            'description' => 'required',
+            'email' => 'required|email|unique:users',
             'name' => 'required',
         ];
-
+        $user = new User();
         $this->validate($request, $rules);
-        $user->description = $request->input('description');
+        $user->email = $request->input('email');
         $user->name = $request->input('name');
-        $user->user_id = aut()->user()->id;
+        $user->password = $request->input('password');
         $user->update();
         return redirect()->route('admin.users.show', ['id' => $user->id]);
     }
