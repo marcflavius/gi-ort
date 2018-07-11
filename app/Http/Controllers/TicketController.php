@@ -37,7 +37,7 @@ class TicketController extends Controller
     public function index(TicketFilters $filters)
     {
 
-        $tickets    = Auth::user()->tickets()->select($filters)->paginate(5);
+        $tickets    = Auth::user()->tickets()->select($filters)->latest()->paginate(5);
         $types      = ["demande", "incident"];
         $status     = ["en_cours", "ouvert", "fermé"];
         $priorities = ['faible', 'normal', 'urgent'];
