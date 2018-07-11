@@ -33,11 +33,10 @@ class AdminTicketController extends Controller
         $types = ["demande", "incident"];
         $status = ["en_cours", "ouvert", "fermé"];
         $priorities = ['faible','normal','urgent'];
-        $categories = Category::list();
-        $typeArray = ['incident' => 'incident', 'demande' => 'demande'];
+        $categoryIdArray = Category::list();
 
         return view('admin.tickets.index',
-            compact('user', 'tickets', 'categories', 'status','types','priorities'));
+            compact('user', 'tickets', 'categoryIdArray', 'status','types','priorities'));
 
     }
 

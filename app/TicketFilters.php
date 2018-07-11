@@ -13,11 +13,9 @@ class TicketFilters extends QueryFilter {
     {
         return $status === null ? $this->builder
             : $this->builder->where('status', $status)->paginate(10);
-
     }
 
-
-    public function category($id = null)
+    public function category_id($id = null)
     {
         return $id === null ? $this->builder
             : $this->builder->where('category_id', $id);

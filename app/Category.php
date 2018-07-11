@@ -23,7 +23,7 @@ class Category extends Model
 
     public function scopeList($query)
     {
-        return     $query->pluck('id');
+        return     $query->pluck('name','id');
     }
 
 }

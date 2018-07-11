@@ -1,22 +1,18 @@
 <div class="ml-auto">
 							{{ Form::open( ['method' => 'GET']) }}
 
-    <div class="align-items-center d-flex flex-row justify-content-end">
+    <div id="filter-cat" class="align-items-center d-flex flex-row justify-content-end">
+							<span class="mr-3">catégories:</span>
+								{{ Form::select('category_id', 	$categoryIdArray, old('category_id'),
+								['class' =>
+                                'form-control mr-3 form-control-sm']) }}
+		@section('js')
+			<script>
+				$("<option value='0'>Tous</option>").prependTo('#filter-cat > select');
+			</script>
+		@endsection
 
-								<span class="mr-3">catégories:</span>
-								<select name="category"
-                                        class="form-control mr-3 form-control-sm">
-									<option value="0">Tous</option>
-                                    @foreach($categories as $category)
-                                        @if ($category === request()->get('category'))
-                                            <option value="{{ request()->get('category') }}"
-                                                    selected>{{ request()->get('category')
-											}}</option>
-                                        @else
-                                            <option value="{{$category}}">{{str_replace('_',' ',$category)}}</option>
-                                        @endif
-                                    @endforeach
-								</select>
+
 
 								<span class="mr-3">priority:</span>
 								<select name="priority"
