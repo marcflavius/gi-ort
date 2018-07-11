@@ -45,6 +45,7 @@
 						<tr>
 							<th scope="col">Id</th>
 							<th scope="col">Nom</th>
+							<th scope="col">Rôle</th>
 							<th scope="col">E-mail</th>
 							<th scope="col">Date de création</th>
 							<th scope="col">Action</th>
@@ -55,6 +56,7 @@
 							<tr>
 								<td>{{$user->id}}</td>
 								<td>{{$user->name}}</td>
+								<td>{{$user->roles()->first()->role_name}}</td>
 								<td>{{$user->email}}</td>
 								<td>{{$user->created_at}}</td>
 								<td>
