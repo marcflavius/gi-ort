@@ -41,7 +41,7 @@ class AdminUserController extends Controller
     {
         $rules = [
             'name' => 'required',
-            'email' => 'required|unique',
+            'email' => 'required|unique:email',
             'password' => 'required|confirmed',
         ];
         $this->validate($request, $rules);
