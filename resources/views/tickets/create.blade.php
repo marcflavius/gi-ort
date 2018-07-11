@@ -29,6 +29,12 @@
                             {{ Form::label('priority', 'Priorité') }}
                             {{ Form::select('priority', $priorityArray, '',['class' => 'form-control form-control-sm']) }}
                         </div>
+
+                        <div class="form-group">
+                            {{ Form::label('status', 'Status') }}
+                            {{ Form::select('status', $statusArray,'',['class' => 'form-control form-control-sm']) }}
+                        </div>
+
                         <div class="form-group">
                             {{ Form::label('category_id', 'Catégorie') }}
                             {{ Form::select('category_id', $categoryIdArray, '',['class' => 'form-control form-control-sm']) }}

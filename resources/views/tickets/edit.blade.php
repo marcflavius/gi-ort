@@ -37,8 +37,10 @@
                     </div>
                     <div class="form-group">
                         {{ Form::label('category_id', 'Catégorie') }}
-                        {{ Form::text('category_id', $ticket->category->id,['class' => 'form-control
+                        {{ Form::text(null, $ticket->category->name,['class' => 'form-control
                         form-control-sm','readonly']) }}
+                        {{ Form::text('category_id', $ticket->category->id,['class' => 'form-control
+                        form-control-sm','readonly','hidden']) }}
                     </div>
                     <div class="form-group">
                         {{ Form::label('description', 'Description du problème') }}

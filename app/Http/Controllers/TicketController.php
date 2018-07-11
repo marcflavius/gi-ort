@@ -76,6 +76,7 @@ class TicketController extends Controller
         $this->validate($request, $this->validate_rules);
         $ticket              = new Ticket();
         $ticket->objet       = $request->input('objet');
+        $ticket->status       = $request->input('status');
         $ticket->description = $request->input('description');
         $ticket->priority    = $request->input('priority');
         $ticket->user_id     = Auth::user()->id;
