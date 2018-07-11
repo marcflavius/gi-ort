@@ -36,7 +36,7 @@ class DatabaseSeeder extends Seeder {
         $this->call(UserTableSeeder::class);
         $this->call(RolesTableSeeder::class);
         $this->call(CategoriesTableSeeder::class);
-        $this->call(TicketsTableSeeder::class);
+        //$this->call(TicketsTableSeeder::class);
         
 //admin
         $admin = factory(User::class)->create([
