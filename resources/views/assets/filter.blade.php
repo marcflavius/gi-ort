@@ -7,7 +7,7 @@
 								['class' =>
                                 'form-control mr-3 form-control-sm']) }}
 
-		
+
 
 		@section('js')
 			<script>

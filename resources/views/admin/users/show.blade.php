@@ -18,6 +18,9 @@
 					<span class="user-field">email:
 						<p>{{$user->email}}</p>
 					</span><br>
+					<span class="user-field">Rôle:
+						  <p>{{$user->roles->first()->role_name}}</p>
+					</span><br><br>
 					<span class="user-field">Mot de passe:
 						  <p>{{$user->password}}</p>
 					</span><br><br>

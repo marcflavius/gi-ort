@@ -26,8 +26,9 @@ class AdminUserController extends Controller
      */
     public function create()
     {
+        $roles = ['1' => 'admin', '2' => 'tech', '3' => 'emp',];
 
-        return view('admin.users.create');
+        return view('admin.users.create',compact('roles'));
         
     }
 
@@ -95,6 +96,7 @@ class AdminUserController extends Controller
         $user->email = $request->input('email');
         $user->name = $request->input('name');
         $user->password = $request->input('password');
+        $user->roles()->attach($request->input('role'));
         $user->update();
         return redirect()->route('admin.users.show', ['id' => $user->id]);
     }

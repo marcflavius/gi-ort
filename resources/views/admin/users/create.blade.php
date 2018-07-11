@@ -25,6 +25,11 @@
 						{{ Form::email('email', "", ['class' => 'form-control', 'rows' => '5']) }}
 					</div>
 
+					<div class="form-group">
+						{{ Form::label('role', 'Rôle') }}
+						{{ Form::select('role', $roles, ['class' => 'form-control', 'rows' => '5']) }}
+					</div>
+
 
 					<div class="form-group row">
 						<label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Mot de passe') }}</label>
