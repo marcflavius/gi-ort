@@ -28,6 +28,7 @@
 						</span>
 					</span>
 					<hr>
+				<a href="{{route('admin.tickets.index')}}" class="btn w-25 btn-primary">Annuler</a>
 				</div>
 			</div>
 		</div>

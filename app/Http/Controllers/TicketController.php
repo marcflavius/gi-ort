@@ -85,7 +85,7 @@ class TicketController extends Controller
             'status' => 'ouvert',
         ]);
 
-        return redirect()->route('tickets.show', $ticket->id)->with('success', 'ticket créé avec succès !');
+        return redirect()->route('tickets.show', $ticket->id)->with('success', 'Le ticket a été créé avec succès !');
     }
 
     /**
@@ -144,6 +144,6 @@ class TicketController extends Controller
         $ticket->type    = $request->input('type');
         $ticket->update();
 
-        return redirect()->route('tickets.show', ['id' => $ticket->id]);
+        return redirect()->route('tickets.show', ['id' => $ticket->id])->with('success','le ticket a été mise à jour avec succès');
     }
 }

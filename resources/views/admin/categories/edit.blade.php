@@ -26,12 +26,11 @@
                         {{ Form::label('description', 'Description') }}
                         {{ Form::textarea('description', $category->description, ['class' => 'form-control', 'rows' => '5']) }}
                     </div>
-                    <a class="btn btn-block btn-primary">Annuler</a>
+                    <a href="{{route('admin.categories.index')}}" class="btn btn-block btn-primary">Annuler</a>
                     {{ Form::submit('Soumettre', ['class' => 'btn btn-block btn-submit btn-primary']) }}
                     {{ Form::close() }}
 				</div>
 			</div>
 		</div>
-
 	</div>
 @endSection

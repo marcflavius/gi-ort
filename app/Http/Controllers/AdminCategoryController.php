@@ -99,7 +99,7 @@ class AdminCategoryController extends Controller
         $category->name = $request->name;
         $category->update();
 
-        return redirect()->route('admin.categories.show', ['id' => $category->id]);
+        return redirect()->route('admin.categories.show', ['id' => $category->id])->with('success','La catégorie a été mise à jour avec succès');
     }
 
     /**
