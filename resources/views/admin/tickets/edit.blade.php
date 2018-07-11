@@ -16,10 +16,22 @@
                     <p class="card-text">
                     {{ Form::open(['route' => ['tickets.update',$ticket->id], 'method' => 'PATCH']) }}
 
-                    <div class="form-group">
+                    @auth
+                        @if(auth()->user()->isAdmin())
+                        <div class="form-group">
                         {{ Form::label('objet', 'Titre du ticket') }}
-                        {{ Form::text('objet', $ticket->objet, ['class' => 'form-control'])}}
+                            {{ Form::text('objet', $ticket->objet, ['class' => 'form-control'])}}
                     </div>
+                        @endif
+                    @endauth
+                    @auth
+                        @if(auth()->user()->isTech())
+                        <div class="form-group">
+                        {{ Form::label('objet', 'Titre du ticket') }}
+                            {{ Form::text('objet', $ticket->objet, ['class' => 'form-control','readonly'])}}
+                    </div>
+                        @endif
+                    @endauth
                     <div class="form-group">
                         {{ Form::label('status', 'Statut') }}
                         {{ Form::select('status', $statusArray, $ticket->status,['class' => 'form-control form-control-sm']) }}
@@ -38,10 +50,24 @@
                         {{ Form::select('category_id', $categoryIdArray, $ticket->category->id,['class' =>
                         'form-control form-control-sm']) }}
                     </div>
-                    <div class="form-group">
+                    @auth
+                        @if(auth()->user()->isAdmin())
+                            <div class="form-group">
                         {{ Form::label('description', 'Description du problème') }}
-                        {{ Form::textarea('description', $ticket->description, ['class' => 'form-control', 'rows' => '5'])}}
+                                {{ Form::textarea('description', $ticket->description, ['class' => 'form-control', 'rows' => '5'])}}
                     </div>
+                        @endif
+                    @endauth
+                    @auth
+                        @if(auth()->user()->isTech())
+                            <div class="form-group">
+                        {{ Form::label('description', 'Description du problème') }}
+                                {{ Form::textarea('description', $ticket->description, ['class' => 'form-control',
+                                'rows' => '5','readonly'])}}
+                    </div>
+                        @endif
+                    @endauth
+
                     <div class="d-flex justify-content-md-center mt-4 row">
                         <a href="{{route('tickets.index')}}"class="btn col-5 py-4 mr-4 btn-danger">Annuler</a>
 

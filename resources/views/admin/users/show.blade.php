@@ -22,37 +22,7 @@
 						  <p>{{$user->password}}</p>
 					</span><br><br>
 					<hr>
-					{{--<a class="btn btn-block btn-primary" data-toggle="modal" data-target="#deleteConfirmationModal">Delete</a>--}}
-				</div>
-			</div>
-			<!-- Modal -->
-			<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" role="dialog"
-			     aria-labelledby="exampleModalLabel" aria-hidden="true">
-				<div class="modal-dialog" role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							@auth
-								@if(auth()->user()->isAdmin())
-								{{ Form::open([
-										'route' => ['admin.tickets.destroy',$user->id],
-										'method' => 'DELETE'
-										])
-								}}
-								<button type="submit" class="btn btn-block btn-primary" data-toggle="collapse"
-								        href="#collapseExample" role="button" aria-expanded="false"
-								        aria-controls="collapseExample">Delete
-								</button>
-								{{ Form::close()}}
-								@endif
-							@endauth
-						</div>
-					</div>
+					<a href="{{route('admin.users.index')}}" class="btn w-25 btn-primary">Annuler</a>
 				</div>
 			</div>
 		</div>

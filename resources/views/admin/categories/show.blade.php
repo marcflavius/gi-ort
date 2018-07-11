@@ -21,8 +21,10 @@
 					<span class="user-field">Responsable:
 						  <p>{{$category->user->name}}</p>
 					</span><br><br>
+					<hr>
+		<a href="{{route('admin.categories.index')}}" class="btn w-25 btn-primary">Annuler</a>
 				</div>
-			</div>	
+			</div>
 		</div>
 		@include('assets.alert')
 	</div>
