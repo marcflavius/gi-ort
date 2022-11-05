@@ -22,7 +22,7 @@
     "dependencies": {
         "browser-sync": "^2.24.4",
         "browser-sync-webpack-plugin": "^2.0.1",
-        "gulp": "^3.9.1",
+        "gulp": "^4.0.2",
         "laravel-elixir": "^6.0.0-18"
     }
 }
